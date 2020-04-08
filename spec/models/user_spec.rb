@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'relationships' do
-    # it {should have_many(:posts)}
+    it {should have_many(:posts)}
     it {should belong_to(:group)}
   end
 end
