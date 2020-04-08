@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2020_04_08_020617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "days", force: :cascade do |t|
+    t.bigint "group_id"
+    t.integer "week"
+    t.integer "day_of_week"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_days_on_group_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -32,5 +41,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_020617) do
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
+  add_foreign_key "days", "groups"
   add_foreign_key "users", "groups"
 end
