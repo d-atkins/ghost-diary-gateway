@@ -9,6 +9,6 @@ RSpec.describe Day, type: :model do
 
   describe 'relationships' do
     it { should belong_to(:group) }
-    # it { should have_many(:posts) }
+    it { should have_many(:posts) }
   end
 end
