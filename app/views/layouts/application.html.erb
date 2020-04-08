@@ -8,7 +8,9 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
+  <nav class='topnav'>
+    <%= link_to "Login", github_login_path %>
+  </nav>
   <body>
     <%= yield %>
   </body>
