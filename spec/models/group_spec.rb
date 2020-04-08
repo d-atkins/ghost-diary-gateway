@@ -5,8 +5,8 @@ RSpec.describe Group, type: :model do
     it { should validate_presence_of(:name) }
   end
 
-  xdescribe 'relationships' do
+  describe 'relationships' do
     it { should have_many(:users) }
-    it { should have_many(:days) }
+    # it { should have_many(:days) }
   end
 end
