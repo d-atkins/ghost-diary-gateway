@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'figaro'
 
 
 group :development, :test do
