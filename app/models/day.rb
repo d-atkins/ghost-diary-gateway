@@ -4,5 +4,5 @@ class Day < ApplicationRecord
   belongs_to :group
   # has_many :day_posts
   # has_many :posts, through: :day_posts
-  enum day_of_week: { Monday: 0, Tuesday: 1, Wednesday: 2, Thursday: 3, Friday: 4 }
+  enum day_of_week: { Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 }
 end
