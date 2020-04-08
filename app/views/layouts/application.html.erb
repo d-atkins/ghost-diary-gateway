@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <nav class='topnav'>
+      <%= link_to 'Login with GitHub', github_login_path unless current_user %>
+    </nav>
     <%= yield %>
   </body>
 </html>
