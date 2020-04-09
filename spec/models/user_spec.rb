@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
     it { should belong_to(:group) }
   end
 
-  describe 'post_count' do
+  describe 'methods' do
     it "can count the amount of posts a user has made" do
       group_1 = Group.create(name: 'Mod 1')
       user = User.create(name: 'user', uid: '1111', group: group_1)
