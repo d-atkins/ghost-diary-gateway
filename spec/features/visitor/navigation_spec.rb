@@ -5,7 +5,10 @@ RSpec.describe "As a Visitor" do
     visit "/"
 
     within '.topnav' do
-      expect(page).to have_content('Log in with GitHub')
+      expect(page).to have_link('Log in with GitHub')
+      expect(page).to_not have_link('Home')
+      expect(page).to_not have_link('Profile')
+      expect(page).to_not have_link('Logout')
     end
   end
 end
