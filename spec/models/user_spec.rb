@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'methods' do
-    it "can count the amount of posts a user has made" do
+    it 'post_count' do
       group_1 = Group.create(name: 'Mod 1')
       user = User.create(name: 'user', uid: '1111', group: group_1)
       day_1 = Day.create(week: 1, day_of_week: 1, group: group_1)
