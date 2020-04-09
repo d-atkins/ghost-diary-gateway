@@ -23,12 +23,12 @@ RSpec.describe 'Home Index -' do
         expect(page).to have_content('Welcome!')
         expect(page).to_not have_content('Logged in as ')
 
-        click_link 'Login with GitHub'
+        click_link 'Log in with GitHub'
 
         expect(current_path).to eq('/')
         expect(page).to have_content('Logged in as test-user')
         expect(page).to_not have_content('Logged in as other-user')
-        expect(page).to_not have_link('Login with GitHub')
+        expect(page).to_not have_link('Log in with GitHub')
       end
     end
 
@@ -37,11 +37,11 @@ RSpec.describe 'Home Index -' do
         User.create!(name: 'test-user', uid: '9999', group: @group)
         visit '/'
 
-        click_link 'Login with GitHub'
+        click_link 'Log in with GitHub'
 
         expect(current_path).to eq('/')
         expect(page).to have_content('Logged in as test-user')
-        expect(page).to_not have_link('Login with GitHub')
+        expect(page).to_not have_link('Log in with GitHub')
       end
     end
   end
