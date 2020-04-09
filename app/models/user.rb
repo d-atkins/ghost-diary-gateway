@@ -8,4 +8,8 @@ class User < ApplicationRecord
   belongs_to :group
 
   enum role: { admin: 0, registered_user: 1 }
+
+  def post_count 
+    posts.count
+  end
 end
