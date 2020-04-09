@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   validates_presence_of :name
-  validates_presence_of :email
   validates_presence_of :role
-
-  has_secure_password
+  validates :uid, uniqueness: true, presence: true
 
   has_many :posts
 
   belongs_to :group
+
+  enum role: { admin: 0, registered_user: 1 }
 end

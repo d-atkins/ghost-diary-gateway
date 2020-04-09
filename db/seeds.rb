@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Group.destroy_all
+('1'..'4').to_a.each do |mod_number|
+  Group.create(name: "Mod #{mod_number}")
+end
