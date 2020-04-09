@@ -17,7 +17,7 @@ RSpec.describe "as a registered user" do
 
       visit "/profile/stats"
 
-      expect(page).to have_content("Total posts:")
+      expect(page).to have_content("Total posts: 4")
     end
   end
 end
