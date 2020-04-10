@@ -1,1 +1,8 @@
 <h2>Your Posts</h2>
+
+  <% @posts.each do |post| %>
+    <section class="post-<%= post.id %>">
+    <p><%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %></p>
+    <p><%= post.body %></p>
+    </section>
+  <% end %>
