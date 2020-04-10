@@ -5,11 +5,11 @@ class User < ApplicationRecord
 
   has_many :posts
 
-  belongs_to :group
+  belongs_to :group, optional: true
 
   enum role: { admin: 0, registered_user: 1 }
 
-  def post_count 
+  def post_count
     posts.count
   end
 end

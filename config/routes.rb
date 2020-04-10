@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   namespace :profile do
     resources :stats, only: [:index]
+    resources :group, only: [:new, :create]
   end
+
+  resources :posts, only: [:index]
 end

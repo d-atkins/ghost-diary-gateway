@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     user = User.find_by(uid: [uid])
     if user.nil?
-      user = User.create(uid: uid, name: name, group_id: Group.first.id)
+      user = User.create(uid: uid, name: name)
     end
     session[:user_id] = user.id
 
