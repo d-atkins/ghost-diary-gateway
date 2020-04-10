@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
 
   describe 'relationships' do
     it { should have_many(:posts) }
-    it { should belong_to(:group) }
+    it { should belong_to(:group).optional(true) }
   end
 
   describe 'methods' do

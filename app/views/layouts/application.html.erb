@@ -18,15 +18,15 @@
       <% else %>
         <%= link_to 'Log in with GitHub', github_login_path  %>
       <% end %>
-    </nav>
 
+    </nav>
     <% flash.each do |name, msg| %>
-      <div class="<%=name%>-flash">
+      <div class= "<%=name%>-flash">
         <p><%= msg %></p>
       </div>
     <% end %>
-
-    <%= yield %>
-    
+    <center>
+      <%= yield %>
+    </center>
   </body>
 </html>
