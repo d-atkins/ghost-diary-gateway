@@ -11,7 +11,13 @@
 
   <body>
     <nav class='topnav'>
-      <%= link_to 'Log in with GitHub', github_login_path unless current_user %>
+      <% if current_user != nil %>
+        <%= link_to 'Home', '/' %>
+        <%= link_to 'Profile', '/profile' %>
+        <%= link_to 'Logout', '/logout' %>
+      <% else %>
+        <%= link_to 'Log in with GitHub', github_login_path  %>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
