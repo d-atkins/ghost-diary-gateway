@@ -29,7 +29,3 @@ Shoulda::Matchers.configure do |config|
    with.library :rails
  end
 end
-
-config.generators do |g|
-  g.factory_bot suffix: "factory"
-end
