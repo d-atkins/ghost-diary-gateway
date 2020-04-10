@@ -13,7 +13,7 @@ RSpec.describe 'Profile/group edit page -' do
         visit '/'
 
         expect(page).to have_content("It seems you haven't joined a group yet.")
-        click_button('Join a group now!')
+        click_link('Join a group now!')
 
         expect(current_path).to eq('/profile/group/edit')
 
