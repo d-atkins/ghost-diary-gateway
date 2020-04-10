@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'Profile/group edit page -' do
+RSpec.describe 'Profile/Group New -' do
   describe 'Registered user' do
     describe 'without a group' do
       it 'can join a group' do
@@ -15,7 +15,7 @@ RSpec.describe 'Profile/group edit page -' do
         expect(page).to have_content("It seems you haven't joined a group yet.")
         click_link('Join a group now!')
 
-        expect(current_path).to eq('/profile/group/edit')
+        expect(current_path).to eq(new_profile_group_path)
 
         select 'Mod 1', :from => 'groupSelect'
         click_button('Join')
