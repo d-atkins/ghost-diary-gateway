@@ -17,7 +17,7 @@ RSpec.describe 'Profile/Group New -' do
 
         expect(current_path).to eq(new_profile_group_path)
 
-        select 'Mod 1', :from => 'groupSelect'
+        select 'Mod 1', :from => :group_select
         click_button('Join')
 
         expect(current_path).to eq('/posts')
