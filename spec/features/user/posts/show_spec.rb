@@ -28,9 +28,9 @@ RSpec.describe "As a Registered User in a group", type: :feature do
     expect(page).to have_content(@post_3.body)
   end
 
-  it "when on the posts show page, I can click link and see the post's information" do
+  it "when on the posts index page, I can click link and see the post's information" do
     click_link("Click to see post #{@post_2.id}'s info.")
-    
+
     expect(page).to have_content(@post_2.id)
     expect(page).to have_content(@group_1.name)
     expect(page).to have_content(@day_2.week)
@@ -38,6 +38,5 @@ RSpec.describe "As a Registered User in a group", type: :feature do
     expect(page).to have_content(@post_2.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p"))
     expect(page).to have_content(@post_2.body)
   end
-
 
 end
