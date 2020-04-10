@@ -17,11 +17,11 @@ RSpec.describe 'Profile/Group New -' do
 
         expect(current_path).to eq(new_profile_group_path)
 
-        select 'Mod 1', :from => :group_select
+        select 'Mod 3', :from => :group_select
         click_button('Join')
 
         expect(current_path).to eq('/posts')
-        expect(page).to have_content('You have joined Mod 1!')
+        expect(page).to have_content('You have joined Mod 3!')
         expect(page).to_not have_content("It seems you haven't joined a group yet.")
       end
     end
