@@ -19,6 +19,14 @@
         <%= link_to 'Log in with GitHub', github_login_path  %>
       <% end %>
     </nav>
+
+    <% flash.each do |name, msg| %>
+      <div class="<%=name%>-flash">
+        <p><%= msg %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
+    
   </body>
 </html>
