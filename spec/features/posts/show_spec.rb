@@ -24,5 +24,15 @@ RSpec.describe 'Post show -', type: :feature do
       expect(page).to have_content(@day_4.day_of_week)
       expect(page).to have_content(@post_4.body)
     end
+
+    it 'sees reaction buttons' do
+      within('#reactions') do
+        expect(page).to have_button('Like', count: 1)
+        expect(page).to have_button('Dislike', count: 1)
+        expect(page).to have_button('Can relate', count: 1)
+        expect(page).to have_button('Lol', count: 1)
+        expect(page).to have_button('Upset', count: 1)
+      end
+    end
   end
 end
