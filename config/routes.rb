@@ -4,18 +4,12 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'sessions#create'
 
-  get '/profile', to: 'users#show'
-  get '/profile/stats', to: 'user/stats#index'
-  get '/profile/posts', to: 'user/posts#index'
-  get '/profile/posts/:id', to: 'user/posts#show'
-
-  get '/posts', to: 'posts#index'
-  get '/posts/:id', to: 'posts#show'
-
   namespace :profile do
+    get '/', to: 'dashboard#index'
     resources :stats, only: [:index]
     resources :group, only: [:new, :create]
+    resources :posts, only: [:index, :show]
   end
 
-  resources :posts, only: [:index]
+  resources :posts, only: [:index, :show]
 end
