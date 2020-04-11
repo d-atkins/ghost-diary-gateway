@@ -9,7 +9,7 @@ class Profile::PostsController < Profile::BaseController
   end
 
   def create
-    day = Day.create(week: 1, day_of_week: 1, group: current_user.group)
+    day = Day.find_or_create_by(week: 1, day_of_week: 1, group: current_user.group)
     tone = "empty"
     defaults = {day: day, tone: tone}
     params = defaults.merge(post_params)
