@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.with_matching_group(current_user.group.id)
+    @posts = Group.find(current_user.group.id).posts
   end
 
   def show
