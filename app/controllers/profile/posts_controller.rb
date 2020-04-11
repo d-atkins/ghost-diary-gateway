@@ -9,14 +9,18 @@ class Profile::PostsController < Profile::BaseController
   end
 
   def create
-    post = current_user.posts.new(post_params)
+    day = Day.create(week: 1, day_of_week: 1, group: current_user.group)
+    tone = "empty"
+    defaults = {day: day, tone: tone}
+    params = defaults.merge(post_params)
+    post = current_user.posts.new(params)
     post.save
-    redirect_to profile_posts_path
+    redirect_to posts_path
   end
 
   private
     def post_params
-      params.permit(:body, :tone, :day_id)
+      params.permit(:body, :tone, :day)
     end
 
 end
