@@ -1,5 +1,4 @@
-class Profile::StatsController < ApplicationController
+class Profile::StatsController < Profile::BaseController
   def index
-    
   end
 end

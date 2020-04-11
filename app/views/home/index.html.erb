@@ -4,4 +4,6 @@
   <br>
   <p>It seems you haven't joined a group yet.</p>
   <%= link_to 'Join a group now!', new_profile_group_path %>
+<% elsif current_user %>
+  <p><%= link_to "See all posts!", "/posts" %></p>
 <% end %>

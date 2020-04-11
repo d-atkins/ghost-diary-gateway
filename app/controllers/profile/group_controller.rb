@@ -1,4 +1,4 @@
-class Profile::GroupController < ApplicationController
+class Profile::GroupController < Profile::BaseController
   def new
     @groups = Group.all
   end
