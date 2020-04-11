@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
 
   describe 'relationships' do
     it { should have_many(:posts) }
+    it { should have_many(:reactions) }
     it { should belong_to(:group).optional(true) }
   end
 
