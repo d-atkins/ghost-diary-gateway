@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ProfileController  < Profile::BaseController
 
   def show
     get_user if current_user
