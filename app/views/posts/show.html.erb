@@ -1,7 +1,13 @@
-<h2>Post <%= @post.id %></h2>
+<h2>Post</h2>
 
-<p>Group: <%= @post.user.group.name %></p>
-<p>Week #<%= @post.day.week %></p>
-<p>Day #<%= @post.day.day_of_week %></p>
-<p>Date: <%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
+<p><%= @post.user.group.name %></p>
+<p class='.day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></p>
 <p><%= @post.body %></p>
+
+<section id='reactions'>
+  <%= button_to 'Like', '/' %>
+  <%= button_to 'Dislike', '/' %>
+  <%= button_to 'Can relate', '/' %>
+  <%= button_to 'Lol', '/' %>
+  <%= button_to 'Upset', '/' %>
+</section>
