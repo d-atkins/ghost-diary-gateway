@@ -9,6 +9,7 @@ RSpec.describe Post, type: :model do
   describe 'relationships' do
     it { should belong_to(:day) }
     it { should belong_to(:user) }
+    it { should have_many(:reactions) }
   end
 
   describe 'methods' do
@@ -22,8 +23,8 @@ RSpec.describe Post, type: :model do
 
       expect(post1.reaction_by_user(user1, 0)).to eq(reaction1)
       expect(post1.reaction_by_user(user2, 0)).to eq(nil)
-      expect(post1.reaction_by_user(user1, 0)).to eq(nil)
-      expect(post1.reaction_by_user(user2, 0)).to eq(reaction2)
+      expect(post2.reaction_by_user(user1, 0)).to eq(nil)
+      expect(post2.reaction_by_user(user2, 0)).to eq(reaction2)
 
       reaction3 = create(:reaction, category: 0, post: post1, user: user2)
       expect(post1.reaction_by_user(user2, 0)).to eq(reaction3)
