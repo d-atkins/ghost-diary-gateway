@@ -15,6 +15,7 @@ RSpec.describe 'Post show -', type: :feature do
         create(:post, day: day_3, user: poster)
       }
       @post = create(:post, day: day_1, user: poster)
+      create(:reaction, category: 0, post: @post)
 
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
@@ -23,12 +24,46 @@ RSpec.describe 'Post show -', type: :feature do
       visit post_path(@post)
     end
 
-    it 'can react to a post' do
+    it 'can react positively to a post' do
       click_button('Like')
 
       expect(current_path).to eq(post_path(@post))
       expect(page).to_not have_button('Like', count: 1)
       expect(page).to have_button('Undo like', count: 1)
+
+      click_button('Can relate')
+
+      expect(current_path).to eq(post_path(@post))
+      expect(page).to_not have_button('Like', count: 1)
+      expect(page).to have_button('Undo like', count: 1)
+      expect(page).to_not have_button('Can relate', count: 1)
+      expect(page).to have_button('Undo can relate', count: 1)
+
+      click_button('Lol')
+
+      expect(current_path).to eq(post_path(@post))
+      expect(page).to_not have_button('Like', count: 1)
+      expect(page).to have_button('Undo like', count: 1)
+      expect(page).to_not have_button('Can relate', count: 1)
+      expect(page).to have_button('Undo can relate', count: 1)
+      expect(page).to_not have_button('Lol', count: 1)
+      expect(page).to have_button('Undo lol', count: 1)
+    end
+
+    it 'can react negatively to a post' do
+      click_button('Dislike')
+
+      expect(current_path).to eq(post_path(@post))
+      expect(page).to_not have_button('Dislike', count: 1)
+      expect(page).to have_button('Undo dislike', count: 1)
+
+      click_button('Upset')
+
+      expect(current_path).to eq(post_path(@post))
+      expect(page).to_not have_button('Dislike', count: 1)
+      expect(page).to have_button('Undo dislike', count: 1)
+      expect(page).to_not have_button('Upset', count: 1)
+      expect(page).to have_button('Undo upset', count: 1)
     end
   end
 end
