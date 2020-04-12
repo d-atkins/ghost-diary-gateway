@@ -5,9 +5,11 @@
 <p><%= @post.body %></p>
 
 <section id='reactions'>
-  <%= button_to 'Like', '/' %>
-  <%= button_to 'Dislike', '/' %>
-  <%= button_to 'Can relate', '/' %>
-  <%= button_to 'Lol', '/' %>
-  <%= button_to 'Upset', '/' %>
+  <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
+    <% if reaction %>
+      <%= button_to "Undo #{category_to_string(index).downcase}", post_reaction_path(@post, reaction, {category: index}), method: :delete %>
+    <% else %>
+      <%= button_to category_to_string(index), post_reactions_path(@post.id, {category: index}) %>
+    <% end %>
+  <% end %>
 </section>
