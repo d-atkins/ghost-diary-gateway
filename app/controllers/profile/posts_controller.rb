@@ -9,14 +9,8 @@ class Profile::PostsController < Profile::BaseController
   end
 
   def create
-    day = Day.find_or_create_by(week: 1, day_of_week: 1, group: current_user.group)
     length = post_params[:body].length
-    defaults = {day: day, tone: assign_tone(length)}
-    params = defaults.merge(post_params)
-    post = current_user.posts.new(params)
-    post.save
-    flash[:failure] = "Your post cannot exceed 222 characters. Your post was #{length} characters" if length > 222
-    redirect_to posts_path
+    create_post_process(length)
   end
 
   private
@@ -24,31 +18,25 @@ class Profile::PostsController < Profile::BaseController
       params.permit(:body, :tone, :day)
     end
 
-    def assign_tone(length)
-      if length > 222
-        tone = ""
-      else
-        tone = "empty" if post_params[:body] == ""
-        text = Addressable::URI.encode_component(post_params[:body])
-        tone = get_tone(text)[:document_tone][:tones].first[:tone_name] if post_params[:body] != ""
-      end
-      #set this to max_by iteration for tones
+    def create_post_process(length)
+      current_user.posts.create(get_params) if length <= 222
+      display_message(length)
+      redirect_to posts_path
     end
 
-    def tone_conn
-      Faraday.new('https://api.us-south.tone-analyzer.watson.cloud.ibm.com/instances/95e82454-27aa-4915-a1e6-e206440f077f') do |f|
-        f.use Faraday::Request::BasicAuthentication, 'apikey', ENV["ANALYZER_API_KEY"]
-      end
+    def display_message(length)
+      flash[:failure] = "Your post cannot exceed 222 characters. Your post was #{length} characters." if length > 222
+      flash[:empty] = "Your post cannot be empty." if params[:body] == ""
     end
 
-    def tone_response(text)
-      tone_conn.get("/v3/tone?version=2017-09-21&text=#{text}&sentences=false")
+    def get_params
+      day = Day.find_or_create_by(week: 1, day_of_week: 1, group: current_user.group)
+      params = {day: day, tone: get_tone}.merge(post_params)
     end
 
-    def get_tone(text)
-      JSON.parse(tone_response(text).body, symbolize_names: true)
+    def get_tone
+      tone_facade = ToneFacade.new(post_params[:body])
+      tone_facade.assign_tone
     end
-
-    #refactor using service, and maybe a poro (pass in hash to poro, and do iteration in there)
 
 end
