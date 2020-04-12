@@ -38,20 +38,48 @@ RSpec.describe 'Posts create -', type: :feature do
       expect(post.tone).to eq('Analytical')
     end
 
+    it 'can create a post with a generated tone if text has multiple sentences, and add it to index list' do
+      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_field(:body, with: "")
+
+      text = "He’s more myself than I am. Whatever our souls are made of,
+      his and mine are the same…my great thought in living is himself."
+
+      fill_in :body, with: text
+
+      expect(find_field(:body).value).to eq(text)
+
+      click_on('Submit')
+
+      expect(current_path).to eq(posts_path)
+
+      post = Post.last
+
+      expect(page).to have_link("Click", count: 4)
+      expect(page).to have_link("Click to see post #{post.id}'s info.")
+      expect(post.tone).to eq('Joy')
+    end
+
     it 'does not create post with more than 222 characters' do
       expect(page).to have_link("Click", count: 3)
 
       text = "He’s more myself than I am. Whatever our souls are made of, his and mine are the same…my great thought in living is himself. If all else perished, and he remained, I should still continue to be; and if all else remained, and he were annihilated, the universe would turn to a mighty stranger. I should not seem a part of it."
 
-      #validates_numericality, string.length
-      #helper for text field; can set options for limit
-      # maria pair for this!
-
       fill_in :body, with: text
       click_on('Submit')
 
       expect(page).to have_link("Click", count: 3)
-      expect(page).to have_content("Your post cannot exceed 222 characters. Your post was #{text.length} characters")
+      expect(page).to have_content("Your post cannot exceed 222 characters. Your post was #{text.length} characters.")
+    end
+
+    it 'does not create post with empty string' do
+      expect(page).to have_link("Click", count: 3)
+
+      fill_in :body, with: ""
+      click_on('Submit')
+
+      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_content("Your post cannot be empty.")
     end
 
   end
