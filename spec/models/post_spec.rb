@@ -29,5 +29,21 @@ RSpec.describe Post, type: :model do
       reaction3 = create(:reaction, category: 0, post: post1, user: user2)
       expect(post1.reaction_by_user(user2, 0)).to eq(reaction3)
     end
+
+    it 'add_reaction' do
+      user1 = create(:user)
+      post = create(:post)
+      3.times { create(:reaction, category:0, post:post) }
+      create(:reaction, category: 0, post: post, user: user1)
+      3.times { create(:reaction, category:0, post:post) }
+
+      expect(post.reactions.find_by(user: user1, category: 0)).to_not be_nil
+      expect(post.reactions.where(category: 0).length).to eq(7)
+
+      post.add_reaction(user1, 1)
+
+      expect(post.reactions.find_by(user: user1, category: 0)).to be_nil
+      expect(post.reactions.where(category: 0).length).to eq(6)
+    end
   end
 end
