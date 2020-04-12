@@ -6,8 +6,11 @@ class Post < ApplicationRecord
   belongs_to :day
   belongs_to :user
 
-  def reaction_by_user(user, category)
-    reactions.find_by(user: user, category: category)
+  def reactions_by_user(user)
+    user_reactions = self.reactions.where(user: user)
+    (0..4).to_a.map do |category|
+      user_reactions.find_by(category: category)
+    end
   end
 
   def add_reaction(user, category)

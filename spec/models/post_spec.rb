@@ -13,21 +13,14 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'methods' do
-    it 'reaction_by_user' do
+    it 'reactions_by_user' do
       user1 = create(:user)
-      user2 = create(:user)
       post1 = create(:post)
-      post2 = create(:post)
       reaction1 = create(:reaction, category: 0, post: post1, user: user1)
-      reaction2 = create(:reaction, category: 0, post: post2, user: user2)
+      reaction2 = create(:reaction, category: 2, post: post1, user: user1)
+      reaction3 = create(:reaction, category: 3, post: post1, user: user1)
 
-      expect(post1.reaction_by_user(user1, 0)).to eq(reaction1)
-      expect(post1.reaction_by_user(user2, 0)).to eq(nil)
-      expect(post2.reaction_by_user(user1, 0)).to eq(nil)
-      expect(post2.reaction_by_user(user2, 0)).to eq(reaction2)
-
-      reaction3 = create(:reaction, category: 0, post: post1, user: user2)
-      expect(post1.reaction_by_user(user2, 0)).to eq(reaction3)
+      expect(post1.reactions_by_user(user1)).to eq([reaction1, nil, reaction2, reaction3, nil])
     end
 
     it 'add_reaction' do
