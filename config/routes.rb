@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:index, :show] do
-    resources :reactions, only: [:create]
+    resources :reactions, only: [:create, :destroy]
   end
 end
