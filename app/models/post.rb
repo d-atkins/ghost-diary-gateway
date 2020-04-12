@@ -4,4 +4,6 @@ class Post < ApplicationRecord
 
   belongs_to :day
   belongs_to :user
+
+  validates_length_of :body, maximum: 222, allow_blank: true
 end
