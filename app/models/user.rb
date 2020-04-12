@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :uid, uniqueness: true, presence: true
 
   has_many :posts
-
+  has_many :reactions
   belongs_to :group, optional: true
 
   enum role: { admin: 0, registered_user: 1 }
