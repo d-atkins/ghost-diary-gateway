@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .topnav {
+  min-height: 40px;
+  background-color: #DCDCDC;
+}
+
+body {
+  background: #FFFAF0;
+}
