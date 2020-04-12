@@ -23,20 +23,32 @@ RSpec.describe Post, type: :model do
       expect(post1.reactions_by_user(user1)).to eq([reaction1, nil, reaction2, reaction3, nil])
     end
 
-    it 'add_reaction' do
-      user1 = create(:user)
-      post = create(:post)
-      3.times { create(:reaction, category:0, post:post) }
-      create(:reaction, category: 0, post: post, user: user1)
-      3.times { create(:reaction, category:0, post:post) }
+    describe 'add_reaction' do
+      before(:each) do
+        @user1 = create(:user)
+        @post = create(:post)
+        3.times { create(:reaction, category:0, post: @post) }
+        create(:reaction, category: 0, post: @post, user: @user1)
+        3.times { create(:reaction, category:0, post: @post) }
+      end
 
-      expect(post.reactions.find_by(user: user1, category: 0)).to_not be_nil
-      expect(post.reactions.where(category: 0).length).to eq(7)
+      it 'deletes an opposite reaction from the same user' do
+        expect(@post.reactions.find_by(user: @user1, category: 0)).to_not be_nil
+        expect(@post.reactions.where(category: 0).length).to eq(7)
 
-      post.add_reaction(user1, 1)
+        @post.add_reaction(@user1, 1)
 
-      expect(post.reactions.find_by(user: user1, category: 0)).to be_nil
-      expect(post.reactions.where(category: 0).length).to eq(6)
+        expect(@post.reactions.find_by(user: @user1, category: 0)).to be_nil
+        expect(@post.reactions.where(category: 0).length).to eq(6)
+      end
+
+      it "can't add multiple likes from the same user" do
+        expect(@post.reactions.where(category: 0, user: @user1).length).to eq(1)
+
+        @post.add_reaction(@user1, 0)
+        
+        expect(@post.reactions.where(category: 0, user: @user1).length).to eq(1)
+      end
     end
   end
 end
