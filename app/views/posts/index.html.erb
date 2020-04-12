@@ -6,3 +6,21 @@
     <p><%= post.body %></p>
     </section>
   <% end %>
+
+  <%= form_tag '/profile/posts' do %>
+    <%= label_tag :post %>
+    <%= text_area_tag :body %>
+
+    <%= submit_tag 'Submit' %>
+  <% end %>
+
+  <div class="ghost-container">
+    <div class="ghost-body">
+      <div class="eyeball"></div>
+      <div class="eyeball"></div>
+    </div>
+    <div class="flap"></div>
+    <div class="flap"></div>
+    <div class="flap"></div>
+    <div class="shadow"></div>
+  </div>

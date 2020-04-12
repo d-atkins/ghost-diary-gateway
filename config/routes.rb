@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
     resources :stats, only: [:index]
     resources :group, only: [:new, :create]
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show, :create]
   end
 
   resources :posts, only: [:index, :show] do
