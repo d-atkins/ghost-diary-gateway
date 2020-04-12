@@ -1,0 +1,121 @@
+.ghost-container {
+  width: 100px;
+  animation: move 10s linear infinite;
+}
+/* @keyframes move {
+  16.7% {
+    transform: translate(200px, 100px) scale(1.2);
+  }
+  33.3% {
+    transform: translate(400px, 0px);
+  }
+  50% {
+    transform: translate(600px, 100px) scale(1.2);
+  }
+  66.7% {
+    transform: translate(400px, 0px);
+  }
+  83.4% {
+    transform: translate(200px, 100px) scale(1.2);
+  }
+} */
+
+.ghost-body {
+  background: cornflowerblue;
+  height: 120px;
+  border-radius: 50% 50% 0% 0%;
+  text-align: center;
+}
+
+.flap {
+  background: cornflowerblue;
+  height: 20px;
+  width: 30.6%;
+  display: inline-block;
+  border-radius: 0% 0% 45% 45%;
+  transform: translate(0px, -1px);
+  animation: flappy 1s linear infinite;
+}
+@keyframes flappy {
+  33% {
+    border-radius: 0% 0% 80% 0%;
+  }
+  67% {
+    border-radius: 0% 0% 0% 80%;
+
+  }
+}
+
+body {
+  background: white;
+}
+
+.eyeball {
+  background: white;
+  height: 30px;
+  width: 10px;
+  display: inline-block;
+  border-radius: 30%;
+  margin-top: 40px;
+  margin-right: 5px;
+  margin-left: 5px;
+  animation: blink 3s linear infinite;
+}
+@keyframes blink {
+  80% {
+    height: 30px;
+    width: 10px;
+    margin-top: 40px;
+    background: white;
+  }
+  85% {
+    height: 3px;
+    width: 20px;
+    margin-top: 55px;
+    background: black;
+  }
+  90% {
+    height: 30px;
+    width: 10px;
+    margin-top: 40px;
+    background: white;
+  }
+}
+
+.shadow {
+  background: #DCDCDC;
+  height: 15px;
+  margin-top: 10px;
+  border-radius: 50% 50% 80% 80%;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+/* .redeye {
+  background: red;
+  animation: fadered 3s linear infinite;
+
+}
+
+@keyframes fadered {
+  80% {
+    height: 30px;
+    width: 10px;
+    margin-top: 40px;
+    background: red;
+  }
+  85% {
+    height: 3px;
+    width: 20px;
+    margin-top: 55px;
+    background: black;
+  }
+  90% {
+    height: 30px;
+    width: 10px;
+    margin-top: 40px;
+    background: red;
+  }
+} */
