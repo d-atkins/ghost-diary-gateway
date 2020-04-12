@@ -12,7 +12,7 @@ class Post < ApplicationRecord
 
   def add_reaction(user, category)
     reaction = Reaction.new(user: user, category: category)
-    reactions << reaction
+    reactions << reaction unless reactions.find_by(user: reaction.user, category: reaction.category)
     destroy_opposite_reaction(user, reaction)
   end
 
