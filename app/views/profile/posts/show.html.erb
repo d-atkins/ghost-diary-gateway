@@ -7,12 +7,12 @@
 <p><%= @post.body %></p>
 
 <div class="ghost-container">
-  <div class="ghost-body">
-    <div class="eyeball"></div>
-    <div class="eyeball"></div>
-  </div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="shadow"></div>
-</div>
+   <div class="ghost-body" id="<%= @post.tone %>">
+     <div class="eyeball"></div>
+     <div class="eyeball"></div>
+   </div>
+   <div class="flap" id="flap-<%= @post.tone %>"></div>
+   <div class="flap" id="flap-<%= @post.tone %>"></div>
+   <div class="flap" id="flap-<%= @post.tone %>"></div>
+   <div class="shadow"></div>
+ </div>
