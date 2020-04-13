@@ -10,28 +10,28 @@
   </head>
 
   <body>
-    <nav class='topnav'>
-      <% if current_user != nil %>
-        <% if current_user.role == "registered_user" %>
-          <%= link_to 'Home', '/' %>
-          <%= link_to 'Profile', '/profile' %>
-          <%= link_to 'Logout', '/logout' %>
-        <% else current_user.role == "admin" %>
-          <%= link_to 'Home', '/' %>
-          <%= link_to 'Dashboard', '/admin/dashboard' %>
-          <%= link_to 'Logout', '/logout' %>
-        <% end %>
-      <% else %>
-        <%= link_to 'Log in with GitHub', github_login_path %>
-      <% end %>
-
-    </nav>
-    <% flash.each do |name, msg| %>
-      <div class= "<%=name%>-flash">
-        <p><%= msg %></p>
-      </div>
-    <% end %>
     <center>
-    <%= yield %>
+      <nav class='topnav'>
+        <% if current_user != nil %>
+          <% if current_user.role == "registered_user" %>
+            <%= link_to 'Home', '/' %>
+            <%= link_to 'Profile', '/profile' %>
+            <%= link_to 'Logout', '/logout' %>
+          <% else current_user.role == "admin" %>
+            <%= link_to 'Home', '/' %>
+            <%= link_to 'Dashboard', '/admin/dashboard' %>
+            <%= link_to 'Logout', '/logout' %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Log in with GitHub', github_login_path %>
+        <% end %>
+      </nav>
+      <% flash.each do |name, msg| %>
+        <div class= "<%=name%>-flash">
+          <p><%= msg %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </center>
   </body>
 </html>
