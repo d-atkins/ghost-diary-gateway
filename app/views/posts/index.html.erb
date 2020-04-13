@@ -17,7 +17,6 @@
   <% end %>
 
   <%= form_tag '/profile/posts', method: :post do %>
-    <%= text_area_tag :body %>
-
+    <%= text_area_tag :body %><br>
     <%= submit_tag 'Submit' %>
   <% end %>
