@@ -6,6 +6,10 @@ class Reaction < ApplicationRecord
 
   enum category: { like: 0, dislike: 1, can_relate: 2, lol: 3, upset: 4 }
 
+  def self.amount_of(category)
+    where(category: category).count
+  end
+
   def opposite
     return 'dislike' if like?
     return 'like' if dislike?
