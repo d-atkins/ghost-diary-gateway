@@ -2,8 +2,7 @@
 
   <% @posts.each do |post| %>
     <section class="post-<%= post.id %>">
-    <p><%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %></p>
-    <p><%= post.body %></p>
+    <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
     <div class="ghost-container">
       <div class="ghost-body">
         <div class="eyeball"></div>
@@ -18,7 +17,6 @@
   <% end %>
 
   <%= form_tag '/profile/posts', method: :post do %>
-    <%= label_tag :body %>
     <%= text_area_tag :body %>
 
     <%= submit_tag 'Submit' %>

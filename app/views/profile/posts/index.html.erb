@@ -2,8 +2,7 @@
 
   <% @posts.each do |post| %>
     <section class="post-<%= post.id %>">
-    <p><%= link_to "Click to see post #{post.id}'s info.", "/profile/posts/#{post.id}" %></p>
-    <p><%= post.body %></p>
+    <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/profile/posts/#{post.id}" %>)</p>
     <div class="ghost-container">
       <div class="ghost-body">
         <div class="eyeball"></div>
