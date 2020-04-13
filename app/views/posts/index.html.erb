@@ -4,6 +4,16 @@
     <section class="post-<%= post.id %>">
     <p><%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %></p>
     <p><%= post.body %></p>
+    <div class="ghost-container">
+      <div class="ghost-body">
+        <div class="eyeball"></div>
+        <div class="eyeball"></div>
+      </div>
+      <div class="flap"></div>
+      <div class="flap"></div>
+      <div class="flap"></div>
+      <div class="shadow"></div>
+    </div>
     </section>
   <% end %>
 
@@ -13,14 +23,3 @@
 
     <%= submit_tag 'Submit' %>
   <% end %>
-
-  <div class="ghost-container">
-    <div class="ghost-body">
-      <div class="eyeball"></div>
-      <div class="eyeball"></div>
-    </div>
-    <div class="flap"></div>
-    <div class="flap"></div>
-    <div class="flap"></div>
-    <div class="shadow"></div>
-  </div>
