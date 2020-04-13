@@ -10,9 +10,9 @@
 <p><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 
 <div id="reactions">
-  <p>Liked by <%= @post.reactions.amount_of(0) %>.</p>
-  <p>Disliked by <%= @post.reactions.amount_of(1) %>.</p>
-  <p><%= @post.reactions.amount_of(2) %> can relate.</p>
-  <p>Made <%= @post.reactions.amount_of(3) %> laugh.</p>
-  <p>Made <%= @post.reactions.amount_of(4) %> say 'ugh'.</p>
+  <p>Liked by <%= @post.reactions.amount_of(0) %></p>
+  <p>Disliked by <%= @post.reactions.amount_of(1) %></p>
+  <p><%= @post.reactions.amount_of(2) %> can relate</p>
+  <p>Made <%= @post.reactions.amount_of(3) %> laugh</p>
+  <p>Made <%= @post.reactions.amount_of(4) %> say 'ugh'</p>
 </div>
