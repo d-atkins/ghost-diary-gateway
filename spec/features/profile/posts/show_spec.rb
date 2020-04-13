@@ -31,5 +31,15 @@ RSpec.describe "Profile/posts show page -", type: :feature do
       expect(page).to have_content(@post_2.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p"))
       expect(page).to have_content(@post_2.body)
     end
+
+    it "sees the post's reaction information" do
+      within('#reactions') do
+        expect(page).to have_content('Liked by 0.')
+        expect(page).to have_content('Disliked by 2.')
+        expect(page).to have_content('7 can relate.')
+        expect(page).to have_content('Funny to 1.')
+        expect(page).to have_content("Made 5 say 'ugh'.")
+      end
+    end
   end
 end
