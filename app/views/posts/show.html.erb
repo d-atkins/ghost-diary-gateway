@@ -1,13 +1,27 @@
 <h2>Post</h2>
 
-<p><%= @post.user.group.name %></p>
+<p><%= @post.day.group.name %></p>
 <p class='.day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></p>
 <p><%= @post.body %></p>
+<p><%= @post.tone %></p>
 
 <section id='reactions'>
-  <%= button_to 'Like', '/' %>
-  <%= button_to 'Dislike', '/' %>
-  <%= button_to 'Can relate', '/' %>
-  <%= button_to 'Lol', '/' %>
-  <%= button_to 'Upset', '/' %>
+  <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
+    <% if reaction %>
+      <%= button_to "Undo #{category_to_string(index).downcase}", post_reaction_path(@post, reaction, {category: index}), method: :delete %>
+    <% else %>
+      <%= button_to category_to_string(index), post_reactions_path(@post.id, {category: index}) %>
+    <% end %>
+  <% end %>
 </section>
+
+<div class="ghost-container">
+  <div class="ghost-body">
+    <div class="eyeball"></div>
+    <div class="eyeball"></div>
+  </div>
+  <div class="flap"></div>
+  <div class="flap"></div>
+  <div class="flap"></div>
+  <div class="shadow"></div>
+</div>
