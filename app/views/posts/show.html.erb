@@ -15,13 +15,4 @@
   <% end %>
 </section>
 
-<div class="ghost-container">
-  <div class="ghost-body">
-    <div class="eyeball"></div>
-    <div class="eyeball"></div>
-  </div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="shadow"></div>
-</div>
+<%= render partial: "shared/ghosts", locals: { post: @post } %>
