@@ -18,16 +18,6 @@ RSpec.describe "As a Registered User in a group", type: :feature do
     visit '/profile/posts'
   end
 
-  it "when on the posts show page, I see links to see the posts I made" do
-    expect(page).to have_content("Your Posts")
-    expect(page).to_not have_link("Click to see post #{@post_1.id}'s info.")
-    expect(page).to have_link("Click to see post #{@post_4.id}'s info.")
-    expect(page).to have_link("Click to see post #{@post_2.id}'s info.")
-    expect(page).to have_link("Click to see post #{@post_3.id}'s info.")
-    expect(page).to have_content(@post_2.body)
-    expect(page).to have_content(@post_3.body)
-  end
-
   it "when on the posts index page, I can click link and see the post's information" do
     click_link("Click to see post #{@post_2.id}'s info.")
 
