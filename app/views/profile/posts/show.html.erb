@@ -5,16 +5,7 @@
 <p><%= @post.body %></p>
 <p><%= @post.tone %></p>
 
-<div class="ghost-container">
-  <div class="ghost-body">
-    <div class="eyeball"></div>
-    <div class="eyeball"></div>
-  </div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="flap"></div>
-  <div class="shadow"></div>
-</div>
+ <%= render partial: "shared/ghosts", locals: { post: @post } %>
 
 <p><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 

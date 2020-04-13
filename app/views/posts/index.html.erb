@@ -3,17 +3,7 @@
   <% @posts.each do |post| %>
     <section class="post-<%= post.id %>">
     <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
-    <div class="ghost-container">
-      <div class="ghost-body">
-        <div class="eyeball"></div>
-        <div class="eyeball"></div>
-      </div>
-      <div class="flap"></div>
-      <div class="flap"></div>
-      <div class="flap"></div>
-      <div class="shadow"></div>
-    </div>
-    </section>
+    <%= render partial: "shared/ghosts", locals: {post: post} %>
   <% end %>
 
   <%= form_tag '/profile/posts', method: :post do %>
