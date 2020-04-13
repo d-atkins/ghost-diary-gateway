@@ -6,6 +6,11 @@ class Tone
   end
 
   def get_max_tone
-    @tone_info[:document_tone][:tones].max_by {|hash| hash[:score]}[:tone_name]
+    tones = @tone_info[:document_tone][:tones]
+    if tones.empty?
+      return 'Default'
+    else
+      tones.max_by {|hash| hash[:score]}[:tone_name]
+    end
   end
 end

@@ -60,6 +60,22 @@ RSpec.describe 'Posts create -', type: :feature do
       expect(post.tone).to eq('Joy')
     end
 
+    it 'can create a post with no tone' do
+      expect(page).to have_link("Click", count: 3)
+      text = 'hmm'
+
+      fill_in :body, with: text
+      click_button('Submit')
+
+      expect(current_path).to eq(posts_path)
+
+      post = Post.last
+
+      expect(page).to have_link("Click", count: 4)
+      expect(page).to have_link("Click to see post #{post.id}'s info.")
+      expect(post.tone).to eq('Default')
+    end
+
     it 'does not create post with more than 222 characters' do
       expect(page).to have_link("Click", count: 3)
 
