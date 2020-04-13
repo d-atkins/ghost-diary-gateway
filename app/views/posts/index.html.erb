@@ -7,8 +7,8 @@
     </section>
   <% end %>
 
-  <%= form_tag '/profile/posts' do %>
-    <%= label_tag :post %>
+  <%= form_tag '/profile/posts', method: :post do %>
+    <%= label_tag :body %>
     <%= text_area_tag :body %>
 
     <%= submit_tag 'Submit' %>

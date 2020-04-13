@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   belongs_to :day
   belongs_to :user
 
+  validates_length_of :body, maximum: 222, allow_blank: true
+
   def reactions_by_user(user)
     user_reactions = self.reactions.where(user: user)
     (0..4).to_a.map do |category|
