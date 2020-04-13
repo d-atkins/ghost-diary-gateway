@@ -3,6 +3,7 @@
 <p><%= @post.user.group.name %></p>
 <p class='.day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></p>
 <p><%= @post.body %></p>
+<p><%= @post.tone %></p>
 
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
