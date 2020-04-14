@@ -30,8 +30,8 @@ class Profile::PostsController < Profile::BaseController
     end
 
     def get_params
-      day = Day.find_or_create_by(week: 1, day_of_week: 1, group: current_user.group)
-      params = {day: day, tone: get_tone}.merge(post_params)
+      day = Day.find_or_create_by(week: 1, day_of_week: 1, group: user_group)
+      {day: day, tone: get_tone}.merge(post_params)
     end
 
     def get_tone
