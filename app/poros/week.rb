@@ -1,6 +1,7 @@
 class Week
   def self.determine(event_data)
-    get_valid_week(split_events(event_data)).last.to_i
+    found_event = get_valid_week(split_events(event_data))
+    get_week_number(found_event)
   end
 
   private
@@ -14,6 +15,12 @@ class Week
     end
 
     def self.valid_week(split_event)
-      split_event.length == 2 && split_event.first.downcase == 'week'
+      first = split_event.first.downcase
+      split_event.length == 2 && (first == 'week' || first == 'intermission')
+    end
+
+    def self.get_week_number(event)
+      return -1 if event.nil?
+      event.last.to_i
     end
 end
