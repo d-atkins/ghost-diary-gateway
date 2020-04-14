@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :require_user
 
   def index
-    @posts = user_group.posts
+    @posts = day_today.posts
   end
 
   def show
