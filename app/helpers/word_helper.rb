@@ -1,4 +1,4 @@
-module TestHelper
+module WordHelper
   def test_me
     'Can you see me?'
   end
