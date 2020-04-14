@@ -3,8 +3,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def calendar_week
+    calendar_facade = CalendarFacade.new
+    # calendar_facade.week_of(user_group.calendar_id)
+    calendar_facade.week_of("casimircreative.com_e9k9b6n7bok174ilmqbfdr0sc4@group.calendar.google.com")
+  end
+
   def user_group
-    current_user.group
+    Group.find(current_user.group.id)
+  end
+
+  def day_today
+    user_group.days.find_or_create_by(week: calendar_week, day_of_week: Time.now.wday)
   end
 
   def current_user
