@@ -13,13 +13,13 @@
  *= require_tree .
  *= require_self
  */
-
+@import "materialize";
 
  .topnav {
   min-height: 40px;
-  background-color: #DCDCDC;
+  background-color: #bdbdbd ;
 }
 
 body {
-  background: #FFFAF0;
+  background: #f5f5f5;
 }
