@@ -23,8 +23,14 @@ class Seed
   private
 
     def generate_groups
-      ('1'..'4').to_a.each do |mod_number|
-        Group.create(name: "Mod #{mod_number}")
+      calendars = {
+        1 => 'casimircreative.com_59k8msrrc2ddhcv787vubvp0s4@group.calendar.google.com',
+        2 => 'casimircreative.com_rps2hg1nfqjih4rcl3gl6s4lpk@group.calendar.google.com',
+        3 => 'casimircreative.com_e9k9b6n7bok174ilmqbfdr0sc4@group.calendar.google.com',
+        4 => 'casimircreative.com_c1s3vspg5v09vh5cnnh88dn2nc@group.calendar.google.com'
+      }
+      calendars.each do |mod_number, calendar_id|
+        Group.create(name: "Mod #{mod_number}", calendar_id: calendar_id)
       end
     end
 

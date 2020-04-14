@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
   def calendar_week
     calendar_facade = CalendarFacade.new
-    # calendar_facade.week_of(user_group.calendar_id)
-    calendar_facade.week_of("casimircreative.com_e9k9b6n7bok174ilmqbfdr0sc4@group.calendar.google.com")
+    calendar_facade.week_of(user_group.calendar_id)
   end
 
   def user_group
