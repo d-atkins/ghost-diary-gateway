@@ -8,9 +8,9 @@
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
     <% if reaction %>
-      <%= button_to "Undo #{category_to_string(index).downcase}", post_reaction_path(@post, reaction, {category: index}), method: :delete %>
+      <%= button_to "Undo #{category_to_word(index).downcase}", post_reaction_path(@post, reaction, {category: index}), method: :delete %>
     <% else %>
-      <%= button_to category_to_string(index), post_reactions_path(@post.id, {category: index}) %>
+      <%= button_to category_to_word(index), post_reactions_path(@post.id, {category: index}) %>
     <% end %>
   <% end %>
 </section>
