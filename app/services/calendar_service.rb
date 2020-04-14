@@ -3,8 +3,8 @@ class CalendarService
   def self.get_current_week(calendar_id)
     response = conn.get("/calendar/v3/calendars/#{calendar_id}/events") do |f|
       f.params['key'] = ENV['GOOGLE_API_KEY']
-      f.params['timeMin'] = "#{sunday}T00:00:00-07:00"
-      f.params['timeMax'] = "#{saturday}T23:59:59-07:00"
+      f.params['timeMin'] = "#{sunday}T03:00:00-07:00"
+      f.params['timeMax'] = "#{saturday}T20:00:00-07:00"
       f.params['q'] = 'Week'
     end
     JSON.parse(response.body, symbolize_names: true)[:items]
