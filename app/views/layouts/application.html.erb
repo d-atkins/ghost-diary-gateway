@@ -13,30 +13,33 @@
     <center>
       <nav class='topnav'>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">Ghost Diaries</a>
+          <!-- <a href="#" class="brand-logo center">Ghost Diaries</a> -->
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <% if current_user != nil %>
-          <% if current_user.role == "registered_user" %>
-            <li><a href="home.html"></a><%= link_to 'Home', '/' %></li>
-            <li><a href="profile.html"></a><%= link_to 'Profile', '/profile' %></li>
-            <li><a href="logout.html"></a><%= link_to 'Logout', '/logout' %></li>
-          <% else current_user.role == "admin" %>
-            <li><a href="home.html"></a><%= link_to 'Home', '/' %></li>
-            <li><a href="dashboard.html"></a><%= link_to 'Dashboard', '/admin/dashboard' %></li>
-            <li><a href="logout.html"></a><%= link_to 'Logout', '/logout' %></li>
-          <% end %>
-        <% else %>
-          <li><a href="log_in_with_github.html"></a><%= link_to 'Log in with GitHub', github_login_path %></li>
-        <% end %>
+            <% if current_user != nil %>
+              <% if current_user.role == "registered_user" %>
+                <li><%= link_to 'Home', '/' %></li>
+                <li><%= link_to 'Profile', '/profile' %></li>
+                <li><%= link_to 'Logout', '/logout' %></li>
+              <% else current_user.role == "admin" %>
+                <li><%= link_to 'Home', '/' %></li>
+                <li><%= link_to 'Dashboard', '/admin/dashboard' %></li>
+                <li><%= link_to 'Logout', '/logout' %></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to 'Log in with GitHub', github_login_path %></li>
+            <% end %>
         </ul>
       </div>
       </nav>
+
       <% flash.each do |name, msg| %>
         <div class= "<%=name%>-flash">
           <p><%= msg %></p>
         </div>
       <% end %>
+
       <%= yield %>
+      
     </center>
   </body>
 </html>
