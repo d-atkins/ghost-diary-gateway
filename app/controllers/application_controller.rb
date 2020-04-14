@@ -1,10 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :category_to_string
+  helper_method :current_user
 
-  def category_to_string(category)
-    ['Like', 'Dislike', 'Can relate', 'Lol', 'Upset'][category]
+  def calendar_week
+    calendar_facade = CalendarFacade.new
+    calendar_facade.week_of(user_group.calendar_id)
+  end
+
+  def user_group
+    Group.find(current_user.group.id)
+  end
+
+  def day_today
+    user_group.days.find_or_create_by(week: calendar_week, day_of_week: Time.now.wday)
   end
 
   def current_user

@@ -18,7 +18,7 @@ RSpec.describe "Profile/posts show page -", type: :feature do
       2.times { create(:reaction, category: 1, post: @post_2) }
       7.times { create(:reaction, category: 2, post: @post_2) }
       create(:reaction, category: 3, post: @post_2)
-      5.times { create(:reaction, category: 4, post: @post_2) }
+      11.times { create(:reaction, category: 4, post: @post_2) }
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
       visit profile_post_path(@post_2)
     end
@@ -34,11 +34,11 @@ RSpec.describe "Profile/posts show page -", type: :feature do
 
     it "sees the post's reaction information" do
       within('#reactions') do
-        expect(page).to have_content('Liked by 0')
-        expect(page).to have_content('Disliked by 2')
-        expect(page).to have_content('7 can relate')
-        expect(page).to have_content('Made 1 laugh')
-        expect(page).to have_content("Made 5 say 'ugh'")
+        expect(page).to have_content('Liked by no one')
+        expect(page).to have_content('Disliked by two')
+        expect(page).to have_content('Seven can relate')
+        expect(page).to have_content('Made one laugh')
+        expect(page).to have_content("Made 11 say 'ugh'")
       end
     end
   end
