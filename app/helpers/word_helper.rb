@@ -1,8 +1,4 @@
 module WordHelper
-  def test_me
-    'Can you see me?'
-  end
-
   def category_to_word(category)
     ['Like', 'Dislike', 'Can relate', 'Lol', 'Upset'][category]
   end
