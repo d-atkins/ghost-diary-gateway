@@ -6,15 +6,29 @@
     <%= render partial: "shared/ghosts", locals: { tone: post.tone.downcase } %>
   <% end %>
 
-<div class="row" style="width:500px;">
-  <%= form_tag '/profile/posts', method: :post, class: 'col s12' do %>
-    <div class="input-field col s12">
-      <i class="material-icons prefix">whatshot</i>
-      <%= text_area_tag :body, nil, class:'materialize-textarea', :'data-length' => '222' %>
-
-      <%= button_tag type: 'submit', class: "btn waves-effect waves-light" do %>
-        Submit<i class="material-icons right">send</i>
-      <% end %>
+  <div class="container">
+    <div class="fixed-action-btn">
+    <a class="btn-large waves-effect modal-trigger" href="#new-post">New Post</a>
     </div>
-  <% end %>
-</div>
+    <div id="new-post" class="modal">
+      <div class="modal-content">
+         <%= form_tag '/profile/posts', method: :post, class: 'col s12' do %>
+         <div class="input-field col s12">
+           <i class="material-icons prefix">whatshot</i>
+           <%= text_area_tag :body, nil, class:'materialize-textarea', :'data-length' => '222' %>
+
+           <%= button_tag type: 'submit', class: "btn waves-effect waves-light" do %>
+           Submit<i class="material-icons right">send</i>
+           <% end %>
+         </div>
+         <div class="modal-footer">
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+<script>
+  $(document).ready(function(){
+      $('.modal').modal();
+    });
+</script>
