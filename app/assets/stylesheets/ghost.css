@@ -1,78 +1,16 @@
 .ghost-container {
   width: 100px;
-  animation: move 10s linear infinite;
+  animation: move 2s linear infinite;
 }
-/* @keyframes move {
-  16.7% {
-    transform: translate(200px, 100px) scale(1.2);
-  }
-  33.3% {
-    transform: translate(400px, 0px);
-  }
+
+@keyframes move {
   50% {
-    transform: translate(600px, 100px) scale(1.2);
+    transform: translate(0px, -10px);
   }
-  66.7% {
-    transform: translate(400px, 0px);
-  }
-  83.4% {
-    transform: translate(200px, 100px) scale(1.2);
-  }
-} */
-#tentative {
-  background: lightskyblue;
 }
 
-#flap-tentative {
-  background: lightskyblue;
-}
-
-#confident {
-  background: deeppink;
-}
-
-#flap-confident {
-  background: deeppink;
-}
-
-#analytical {
-  background: mediumseagreen;
-}
-
-#flap-analytical {
-  background: mediumseagreen;
-}
-
-#sadness {
-  background: dimgrey;
-}
-
-#flap-sadness {
-  background: dimgrey;
-}
-
-#fear {
-  background: rebeccapurple;
-}
-
-#flap-fear {
-  background: rebeccapurple;
-}
-
-#joy {
-  background: yellow;
-}
-
-#flap-joy {
-  background: yellow;
-}
-
-#anger {
-  background: red;
-}
-
-#flap-anger {
-  background: red;
+.outer{
+  width: 100px;
 }
 
 .ghost-body {
@@ -91,6 +29,7 @@
   transform: translate(0px, -1px);
   animation: flappy 1s linear infinite;
 }
+
 @keyframes flappy {
   33% {
     border-radius: 0% 0% 80% 0%;
@@ -116,6 +55,7 @@ body {
   margin-left: 5px;
   animation: blink 3s linear infinite;
 }
+
 @keyframes blink {
   80% {
     height: 30px;
@@ -139,38 +79,49 @@ body {
 
 .shadow {
   background: #DCDCDC;
+  width: 88px;
   height: 15px;
   margin-top: 10px;
   border-radius: 50% 50% 80% 80%;
+  animation: shadow-shrink 2s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes shadow-shrink {
+  50% {
+    transform: scale(0.97);
+  }
 }
 
 .hidden {
   opacity: 0;
 }
 
-/* .redeye {
-  background: red;
-  animation: fadered 3s linear infinite;
-
+#tentative {
+  background: lightskyblue;
 }
 
-@keyframes fadered {
-  80% {
-    height: 30px;
-    width: 10px;
-    margin-top: 40px;
-    background: red;
-  }
-  85% {
-    height: 3px;
-    width: 20px;
-    margin-top: 55px;
-    background: black;
-  }
-  90% {
-    height: 30px;
-    width: 10px;
-    margin-top: 40px;
-    background: red;
-  }
-} */
+#confident {
+  background: deeppink;
+}
+
+#analytical {
+  background: mediumseagreen;
+}
+
+#sadness {
+  background: dimgrey;
+}
+
+#fear {
+  background: rebeccapurple;
+}
+
+#joy {
+  background: yellow;
+}
+
+#anger {
+  background: red;
+}
