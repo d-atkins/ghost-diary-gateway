@@ -4,11 +4,12 @@ RSpec.describe 'Profile/Group New -' do
   describe 'Registered user' do
     describe 'without a group' do
       it 'can join a group' do
-        Group.create(name: 'Mod 1')
-        Group.create(name: 'Mod 2')
-        Group.create(name: 'Mod 3')
+        create(:group, name: 'Mod 1')
+        create(:group, name: 'Mod 2')
+        group = create(:group, name: 'Mod 3')
         user = User.create(name: 'User', uid: '1111')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(create(:day, group: group))
 
         visit '/'
 
@@ -16,7 +17,7 @@ RSpec.describe 'Profile/Group New -' do
         click_link('Join a group now!')
 
         expect(current_path).to eq(new_profile_group_path)
-
+        
         select 'Mod 3', :from => :group_select
         click_button('Join')
 
