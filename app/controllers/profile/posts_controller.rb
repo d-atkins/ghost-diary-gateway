@@ -28,8 +28,8 @@ class Profile::PostsController < Profile::BaseController
     end
 
     def get_tone
-      tone_facade = ToneFacade.new(post_body[:body])
-      tone_facade.assign_tone
+      tone_service = ToneService.new
+      tone_service.get_tone_by_text(post_body)
     end
 
 end
