@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Post show -', type: :feature do
-  describe 'Registered user in a group' do
+  xdescribe 'Registered user in a group' do
     before(:each) do
       group_1 = create(:group)
       user = create(:user, group: group_1)
