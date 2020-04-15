@@ -1,34 +1,6 @@
-<h2>All Posts</h2>
-
-  <% @posts.each do |post| %>
-    <section class="post-<%= post.id %>">
-    <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
-    <%= render partial: "shared/ghosts", locals: { tone: post.tone.downcase } %>
-  <% end %>
-
-  <div class="container">
-    <div class="fixed-action-btn">
-    <a class="btn-large waves-effect modal-trigger" href="#new-post">New Post</a>
-    </div>
-    <div id="new-post" class="modal">
-      <div class="modal-content">
-         <%= form_tag '/profile/posts', method: :post, class: 'col s12' do %>
-         <div class="input-field col s12">
-           <i class="material-icons prefix">whatshot</i>
-           <%= text_area_tag :body, nil, class:'materialize-textarea', :'data-length' => '222' %>
-
-           <%= button_tag type: 'submit', class: "btn waves-effect waves-light" do %>
-           Submit<i class="material-icons right">send</i>
-           <% end %>
-         </div>
-         <div class="modal-footer">
-        </div>
-      <%end%>
-    </div>
-  </div>
-
-<script>
-  $(document).ready(function(){
-      $('.modal').modal();
-    });
-</script>
+<%= render partial: "shared/new_post" %>
+<% @posts.each do |post| %>
+  <section class="post-<%= post.id %>">
+  <p class='bubble'><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
+  <%= render partial: "shared/ghosts", locals: { tone: post.tone.downcase } %>
+<% end %>
