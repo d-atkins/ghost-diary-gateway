@@ -35,7 +35,7 @@ RSpec.describe "Profile/posts show page -", type: :feature do
 
     it "sees the post's reaction information" do
       within('#reactions') do
-        expect(page).to have_content('Liked by no one')
+        expect(page).to have_content('Liked by nobody')
         expect(page).to have_content('Disliked by two')
         expect(page).to have_content('Seven can relate')
         expect(page).to have_content('Made one laugh')
