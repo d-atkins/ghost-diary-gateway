@@ -19,4 +19,4 @@
   <% end %>
 </section><br>
 
-<%= render partial: "shared/ghosts", locals: { post: @post } %>
+<%= render partial: "shared/ghosts", locals: { tone: @post.tone.downcase } %>

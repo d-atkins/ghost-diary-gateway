@@ -15,9 +15,9 @@
 
     <center>
 
-      <nav class='topnav'>
+      <nav class='topnav nav-center' role='navigation'>
         <div class="nav-wrapper">
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <ul id="nav-mobile" class="nav-center hide-on-med-and-down">
             <% if current_user != nil %>
               <% if current_user.role == "registered_user" %>
                 <li><%= link_to 'Home', '/' %></li>
@@ -52,6 +52,6 @@
       </footer>
 
     </center>
-    
+
   </body>
 </html>

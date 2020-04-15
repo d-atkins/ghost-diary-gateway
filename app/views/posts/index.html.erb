@@ -3,7 +3,7 @@
   <% @posts.each do |post| %>
     <section class="post-<%= post.id %>">
     <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
-    <%= render partial: "shared/ghosts", locals: {post: post} %>
+    <%= render partial: "shared/ghosts", locals: { tone: post.tone.downcase } %>
   <% end %>
 
 <div class="row" style="width:500px;">
