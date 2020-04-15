@@ -1,38 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts create -', type: :feature do
-  xdescribe 'Registered user in a group' do
+  describe 'Registered user in a group' do
     before(:each) do
       group_1 = create(:group, name: 'Mod 1')
       group_2 = create(:group, name: 'Mod 2')
       user = create(:user, group: group_1)
-      day_1 = create(:day, week: 1, day_of_week: 1, group: group_1)
+      @day_1 = create(:day, week: 1, day_of_week: 1, group: group_1)
       day_2 = create(:day, week: 1, day_of_week: 1, group: group_2)
       day_3 = create(:day, week: 1, day_of_week: 2, group: group_1)
-      create(:post, day: day_1, user: user)
-      create(:post, day: day_1, user: user)
-      create(:post, day: day_1, user: user)
+      create(:post, day: @day_1, user: user)
+      create(:post, day: @day_1, user: user)
+      create(:post, day: @day_1, user: user)
       create(:post, day: day_2)
       create(:post, day: day_3, user: user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(day_1)
+      allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(@day_1)
 
       visit posts_path
     end
 
     it 'can create a post with a generated tone, and add it to index list' do
       expect(page).to have_link("Click", count: 3)
-
       fill_in :body, with: "This is my first post. What do you think?"
       click_on('Submit')
 
       expect(current_path).to eq(posts_path)
-      # go back to profile posts to assert
+
+      @day_1.reload
+      visit posts_path
       post = Post.last
 
       expect(page).to have_link("Click", count: 4)
-      expect(page).to have_link("Click to see post #{post.id}'s info.")
-      expect(page).to have_content(post.body)
+      expect(page).to have_content('This is my first post. What do you think?')
       expect(post.tone).to eq('Analytical')
     end
 
@@ -47,6 +47,8 @@ RSpec.describe 'Posts create -', type: :feature do
 
       expect(current_path).to eq(posts_path)
 
+      @day_1.reload
+      visit posts_path
       post = Post.last
 
       expect(page).to have_link("Click", count: 4)
@@ -63,6 +65,8 @@ RSpec.describe 'Posts create -', type: :feature do
 
       expect(current_path).to eq(posts_path)
 
+      @day_1.reload
+      visit posts_path
       post = Post.last
 
       expect(page).to have_link("Click", count: 4)
@@ -79,7 +83,7 @@ RSpec.describe 'Posts create -', type: :feature do
       click_on('Submit')
 
       expect(page).to have_link("Click", count: 3)
-      expect(page).to have_content("Your post cannot exceed 222 characters. Your post was #{text.length} characters.")
+      expect(page).to have_content("Body is too long (maximum is 222 characters)")
     end
 
     it 'can not create an empty post' do
@@ -89,7 +93,7 @@ RSpec.describe 'Posts create -', type: :feature do
       click_on('Submit')
 
       expect(page).to have_link("Click", count: 3)
-      expect(page).to have_content("Your post cannot be empty.")
+      expect(page).to have_content("Body can't be blank")
     end
 
   end
