@@ -13,3 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+//= require jquery
+//= require materialize-sprockets
+
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+$(document).ready(function() {
+  $('input#input_text, textarea#body').characterCounter();
+});

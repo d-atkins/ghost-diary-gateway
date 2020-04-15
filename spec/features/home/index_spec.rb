@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Home Index -' do
   describe 'Connecting with Github -' do
     before(:each) do
-      @group = Group.create!(name: 'Test Group')
-      User.create!(name: 'other-user', uid: '1111', group: @group)
+      @group = create(:group, name: 'Test Group')
+      create(:user, name: 'other-user', uid: '1111', group: @group)
 
       auth_mock = {
         "provider"=>"github",

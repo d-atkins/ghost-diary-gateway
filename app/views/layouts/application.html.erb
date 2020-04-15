@@ -10,10 +10,13 @@
   </head>
 
   <body>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <center>
+
       <nav class='topnav'>
         <div class="nav-wrapper">
-          <!-- <a href="#" class="brand-logo center">Ghost Diaries</a> -->
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <% if current_user != nil %>
               <% if current_user.role == "registered_user" %>
@@ -28,8 +31,8 @@
             <% else %>
               <li><%= link_to 'Log in with GitHub', github_login_path %></li>
             <% end %>
-        </ul>
-      </div>
+          </ul>
+        </div>
       </nav>
 
       <% flash.each do |name, msg| %>
@@ -39,17 +42,16 @@
       <% end %>
 
       <%= yield %>
-      
-    </center>
 
-    <center>
-    <footer style="position:fixed;bottom:0;left:0;width:100%;", class='footer'>
+      <footer style="position:fixed;bottom:0;left:0;width:100%;", class='footer'>
         <nav class="light-green lighten-3">
           <ul>
             <p class="white-text"> Made By: David, Maria, Elom and Jenny</p>
           </ul>
         </nav>
-    </footer>
+      </footer>
+
     </center>
+    
   </body>
 </html>

@@ -17,72 +17,71 @@ RSpec.describe 'Post show -', type: :feature do
       @post = create(:post, day: day_1, user: poster)
       create(:reaction, category: 0, post: @post)
 
-      allow_any_instance_of(ApplicationController)
-        .to receive(:current_user)
-        .and_return(@user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(day_1)
 
       visit post_path(@post)
-      click_button('Like')
-      click_button('Lol')
-      click_button('Can relate')
+      find('#reaction-0').click
+      find('#reaction-3').click
+      find('#reaction-2').click
     end
 
     it 'can undo their reactions' do
-      click_button('Undo like')
+      find('#negate-reaction-0').click
 
       expect(current_path).to eq(post_path(@post))
-      expect(page).to have_button('Like', count: 1)
-      expect(page).to_not have_button('Undo like', count: 1)
+      expect(page).to have_css('#reaction-0', count: 1)
+      expect(page).to_not have_css('#negate-reaction-0', count: 1)
 
-      click_button('Undo can relate')
-
-      expect(current_path).to eq(post_path(@post))
-      expect(page).to have_button('Like', count: 1)
-      expect(page).to_not have_button('Undo like', count: 1)
-      expect(page).to have_button('Can relate', count: 1)
-      expect(page).to_not have_button('Undo can relate', count: 1)
-
-      click_button('Undo lol')
+      find('#negate-reaction-2').click
 
       expect(current_path).to eq(post_path(@post))
-      expect(page).to have_button('Like', count: 1)
-      expect(page).to_not have_button('Undo like', count: 1)
-      expect(page).to have_button('Can relate', count: 1)
-      expect(page).to_not have_button('Undo can relate', count: 1)
-      expect(page).to have_button('Lol', count: 1)
-      expect(page).to_not have_button('Undo lol', count: 1)
+      expect(page).to have_css('#reaction-0', count: 1)
+      expect(page).to_not have_css('#negate-reaction-0', count: 1)
+      expect(page).to have_css('#reaction-2', count: 1)
+      expect(page).to_not have_css('#negate-reaction-2', count: 1)
+
+      find('#negate-reaction-3').click
+
+      expect(current_path).to eq(post_path(@post))
+      expect(page).to have_css('#reaction-0', count: 1)
+      expect(page).to_not have_css('#negate-reaction-0', count: 1)
+      expect(page).to have_css('#reaction-2', count: 1)
+      expect(page).to_not have_css('#negate-reaction-2', count: 1)
+      expect(page).to have_css('#reaction-3', count: 1)
+      expect(page).to_not have_css('#negate-reaction-3', count: 1)
     end
 
     it 'can negate a like with a dislike' do
-      click_button('Dislike')
+      find('#reaction-1').click
 
       expect(current_path).to eq(post_path(@post))
-      expect(page).to have_button('Like', count: 1)
-      expect(page).to_not have_button('Undo like', count: 1)
-      expect(page).to_not have_button('Dislike', count: 1)
-      expect(page).to have_button('Undo dislike', count: 1)
+      expect(page).to have_css('#reaction-0', count: 1)
+      expect(page).to_not have_css('#negate-reaction-0', count: 1)
+      expect(page).to_not have_css('#reaction-1', count: 1)
+      expect(page).to have_css('#negate-reaction-1', count: 1)
     end
 
     it 'can negate an lol with an upset' do
-      click_button('Upset')
+      find('#reaction-4').click
 
       expect(current_path).to eq(post_path(@post))
-      expect(page).to have_button('Lol', count: 1)
-      expect(page).to_not have_button('Undo lol', count: 1)
-      expect(page).to_not have_button('Upset', count: 1)
-      expect(page).to have_button('Undo upset', count: 1)
+      expect(page).to have_css('#reaction-3', count: 1)
+      expect(page).to_not have_css('#negate-reaction-3', count: 1)
+      expect(page).to_not have_css('#reaction-4', count: 1)
+      expect(page).to have_css('#negate-reaction-4', count: 1)
     end
 
     it 'handles deleting an already deleted reaction' do
       @user.reactions.last.destroy
 
-      click_button('Undo can relate')
+      find('#negate-reaction-2').click
 
       expect(current_path).to eq(post_path(@post))
-      expect(page).to_not have_button('Like', count: 1)
-      expect(page).to have_button('Undo like', count: 1)
-      expect(page).to have_button('Can relate', count: 1)
-      expect(page).to_not have_button('Undo can relate', count: 1)
+      expect(page).to_not have_css('#reaction-0', count: 1)
+      expect(page).to have_css('#negate-reaction-0', count: 1)
+      expect(page).to have_css('#reaction-2', count: 1)
+      expect(page).to_not have_css('#negate-reaction-2', count: 1)
     end
   end
 end

@@ -6,7 +6,15 @@
     <%= render partial: "shared/ghosts", locals: {post: post} %>
   <% end %>
 
-  <%= form_tag '/profile/posts', method: :post do %>
-    <%= text_area_tag :body %><br>
-     <%= submit_tag 'Submit' %>
+<div class="row" style="width:500px;">
+  <%= form_tag '/profile/posts', method: :post, class: 'col s12' do %>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">whatshot</i>
+      <%= text_area_tag :body, nil, class:'materialize-textarea', :'data-length' => '222' %>
+
+      <%= button_tag type: 'submit', class: "btn waves-effect waves-light" do %>
+        Submit<i class="material-icons right">send</i>
+      <% end %>
+    </div>
   <% end %>
+</div>
