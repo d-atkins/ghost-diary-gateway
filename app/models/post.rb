@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   belongs_to :day
   belongs_to :user
 
-  validates_length_of :body, maximum: 222, allow_blank: false
+  validates_length_of :body, maximum: 222
 
   def reactions_by_user(user)
     user_reactions = self.reactions.where(user: user)
