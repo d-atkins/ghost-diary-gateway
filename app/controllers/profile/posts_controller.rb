@@ -9,32 +9,26 @@ class Profile::PostsController < Profile::BaseController
   end
 
   def create
-    length = post_params[:body].length
-    create_post_process(length)
+    post = Post.new(post_params)
+    if post.save
+      flash[:success] = 'You have made a post!'
+    else
+      flash[:errors] = post.errors.full_messages.to_sentence
+    end
+    redirect_to posts_path
   end
 
   private
+    def post_body
+      params.permit(:body)
+    end
+
     def post_params
-      params.permit(:body, :tone, :day)
-    end
-
-    def create_post_process(length)
-      current_user.posts.create(get_params) if length <= 222
-      display_message(length)
-      redirect_to posts_path
-    end
-
-    def display_message(length)
-      flash[:failure] = "Your post cannot exceed 222 characters. Your post was #{length} characters." if length > 222
-      flash[:empty] = "Your post cannot be empty." if params[:body] == ""
-    end
-
-    def get_params
-      {day: day_today, tone: get_tone}.merge(post_params)
+      {day: day_today, tone: get_tone, user: current_user}.merge(post_body)
     end
 
     def get_tone
-      tone_facade = ToneFacade.new(post_params[:body])
+      tone_facade = ToneFacade.new(post_body[:body])
       tone_facade.assign_tone
     end
 
