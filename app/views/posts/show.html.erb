@@ -8,11 +8,15 @@
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
     <% if reaction %>
-      <%= button_to "Undo #{category_to_word(index).downcase}", post_reaction_path(@post, reaction, {category: index}), method: :delete %>
+      <%= link_to(post_reaction_path(@post, reaction, {category: index}), html_options = {method: :delete, class: clicked_reaction_button, id: "#{category_to_word(index).downcase}"}) do %>
+        <i class="material-icons"><%= reaction_icon(index) %></i>
+      <% end %>
     <% else %>
-      <%= button_to category_to_word(index), post_reactions_path(@post.id, {category: index}) %>
+      <%= link_to(post_reactions_path(@post.id, {category: index}), html_options = {method: :post, class: reaction_button, id: "undo-#{category_to_word(index).downcase}"}) do %>
+        <i class="material-icons"><%= reaction_icon(index) %></i>
+      <% end %>
     <% end %>
   <% end %>
-</section>
+</section><br>
 
 <%= render partial: "shared/ghosts", locals: { post: @post } %>
