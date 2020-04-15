@@ -23,3 +23,7 @@ $(document).ready(function(){
 $(document).ready(function() {
   $('input#input_text, textarea#body').characterCounter();
 });
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});

@@ -8,11 +8,11 @@
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
     <% unless reaction %>
-      <%= link_to(post_reactions_path(@post.id, {category: index}), html_options = {method: :post, class: reaction_button, id: "reaction-#{(index)}"}) do %>
+      <%= link_to(post_reactions_path(@post.id, {category: index}), html_options = {method: :post, class: reaction_button, id: "reaction-#{(index)}", :'data-tooltip' => category_to_word(index), :'data-position' => 'top'}) do %>
       <i class="material-icons"><%= reaction_icon(index) %></i>
       <% end %>
     <% else %>
-      <%= link_to(post_reaction_path(@post, reaction, {category: index}), html_options = {method: :delete, class: clicked_reaction_button, id: "negate-reaction-#{index}"}) do %>
+      <%= link_to(post_reaction_path(@post, reaction, {category: index}), html_options = {method: :delete, class: clicked_reaction_button, id: "negate-reaction-#{index}", :'data-tooltip' => category_to_word(index), :'data-position' => 'top'}) do %>
       <i class="material-icons"><%= reaction_icon(index) %></i>
       <% end %>
     <% end %>
