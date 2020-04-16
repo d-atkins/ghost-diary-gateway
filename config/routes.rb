@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+    # delete '/dashboard/posts/:id', to: 'posts#destroy'
+    resources :posts, only: [:index, :destroy]
+  end
+
   namespace :profile do
     get '/', to: 'dashboard#index'
     resources :stats, only: [:index]

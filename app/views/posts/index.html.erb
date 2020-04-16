@@ -1,5 +1,5 @@
 <%= render partial: "shared/new_post" %>
 <% @posts.each do |post| %>
   <section class="post-<%= post.id %>">
-  <%= render partial: "shared/ghosts", locals: { post: post, path: post_path(post.id) } %>
+  <%= render partial: "shared/ghosts", locals: { post: post, path: post_path(post.id), admin: false } %>
 <% end %>

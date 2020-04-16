@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   validates_presence_of :body
   validates_presence_of :tone
 
-  has_many :reactions
+  has_many :reactions, dependent: :destroy
   belongs_to :day
   belongs_to :user
 

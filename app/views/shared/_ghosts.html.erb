@@ -2,6 +2,11 @@
   <%= link_to path do %>
     <p class = 'bubble'><%= post.body %></p>
   <% end %>
+  <% if admin %>
+    <%= link_to admin_post_path(post.id), method: :delete do %>
+      <i class="medium material-icons">delete_forever</i>
+    <% end %>
+  <% end %>
   <div class="outer">
     <div class="ghost-container">
       <div class="ghost-body" id="<%= post.tone.downcase %>">

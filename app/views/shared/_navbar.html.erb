@@ -7,13 +7,12 @@
           <i class="large material-icons">home</i>
         <% end %>
       </li>
-        <% if current_user.registered_user? %>
-          <li>
-            <%= link_to profile_path, html_options = {id: 'profile'} do %>
-              <i class="large material-icons">account_circle</i>
-            <% end %>
-          </li>
-        <% elsif current_user.admin? %>
+      <li>
+        <%= link_to profile_path, html_options = {id: 'profile'} do %>
+          <i class="large material-icons">account_circle</i>
+        <% end %>
+      </li>
+        <% if current_user.admin? %>
           <li>
             <%= link_to '/admin/dashboard', html_options = {id: 'dashboard'} do %>
               <i class="large material-icons">dashboard</i>
