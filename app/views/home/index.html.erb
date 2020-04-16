@@ -1,11 +1,12 @@
-<p><%= "Logged in as #{current_user.name}" if current_user %></p>
-<p>Welcome!</p>
+<h3>Welcome to Ghost Diary</h3>
+<p>The place to explore the memories left behind by your predecessors.</p>
 <% if current_user && current_user.group.nil? %>
-  <br>
   <p>It seems you haven't joined a group yet.</p>
-  <%= link_to 'Join a group now!', new_profile_group_path %>
+  <%= link_to 'Join one to get started!', new_profile_group_path %>
 <% elsif current_user %>
-  <p><%= link_to "See all posts!", "/posts" %></p>
+  <p><%= link_to "Start Exploring", "/posts" %></p>
+<% else %>
+  <p>Log in to get started.</p>
 <% end %>
 
 <div class="ghost-container">
