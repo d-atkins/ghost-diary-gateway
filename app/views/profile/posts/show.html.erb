@@ -1,5 +1,5 @@
 <h4><%= @post.day.group.name %></h4>
-<h6 class='day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></h6>
+<h6 class='day-week'><%= "#{@post.day.day_of_week}," %><%= @post.day.display_week %></h6>
 
 <p class ='small-font'><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 <%= render partial: "shared/ghosts", locals: { post: @post, path: profile_post_path(@post.id), admin: false } %>
