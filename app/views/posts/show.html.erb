@@ -1,22 +1,17 @@
-<h2>Post</h2>
+<h2><%= @post.day.group.name %></h2>
+<h4 class='day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></h4><br>
 
-<p><%= @post.day.group.name %></p>
-<p class='.day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></p>
-<p><%= @post.body %></p>
-<p><%= @post.tone %></p>
-
+<%= render partial: "shared/ghosts", locals: { post: @post, path: post_path(@post.id), admin: false } %><br>
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
     <% unless reaction %>
-      <%= link_to(post_reactions_path(@post.id, {category: index}), html_options = {method: :post, class: reaction_button, id: "reaction-#{(index)}"}) do %>
-      <i class="material-icons"><%= reaction_icon(index) %></i>
+      <%= link_to(post_reactions_path(@post.id, {category: index}), html_options = {method: :post, class: reaction_button, id: "reaction-#{(index)}", :'data-tooltip' => category_to_word(index), :'data-position' => 'top'}) do %>
+        <i class="material-icons"><%= reaction_icon(index) %></i>
       <% end %>
     <% else %>
-      <%= link_to(post_reaction_path(@post, reaction, {category: index}), html_options = {method: :delete, class: clicked_reaction_button, id: "negate-reaction-#{index}"}) do %>
-      <i class="material-icons"><%= reaction_icon(index) %></i>
+      <%= link_to(post_reaction_path(@post, reaction, {category: index}), html_options = {method: :delete, class: clicked_reaction_button, id: "negate-reaction-#{index}", :'data-tooltip' => category_to_word(index), :'data-position' => 'top'}) do %>
+        <i class="material-icons"><%= reaction_icon(index) %></i>
       <% end %>
     <% end %>
   <% end %>
-</section><br>
-
-<%= render partial: "shared/ghosts", locals: { post: @post } %>
+</section>

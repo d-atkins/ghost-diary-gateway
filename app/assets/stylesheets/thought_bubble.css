@@ -1,0 +1,36 @@
+p.bubble {
+  position:relative;
+  width:400px;
+  padding:20px 40px;
+  margin:10px 10px 80px 40px;
+  background:#fac868;
+  border-radius:180px;
+  box-shadow: -3px 4px 8px #989898;
+  color:#575544;
+  font-size:1em;
+  letter-spacing:.06em;
+}
+
+p.bubble:before {
+  content:"";
+  position:absolute;
+  bottom:-40px;
+  left:80px;
+  background:#fac868;
+  width:30px;
+  height:30px;
+  border-radius:30px;
+  box-shadow: -3px 3px 8px #989898;
+}
+
+p.bubble:after {
+  content:"";
+  position:absolute;
+  bottom:-55px;
+  left:120px;
+  width:15px;
+  height:15px;
+  background:#fac868;
+  border-radius:15px;
+  box-shadow: -3px 3px 8px #989898;
+}

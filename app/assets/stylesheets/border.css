@@ -1,0 +1,20 @@
+.tri-color-border {
+    height: .625rem;
+    display: flex;
+    width: 100%;
+}
+
+.tri-color-border .y {
+    background: #f9ae06;
+    flex: 1;
+}
+
+.tri-color-border .r {
+    background: #ef3852;
+    flex: 1;
+}
+
+.tri-color-border .b {
+    background: #12f1fc;
+    flex: 1;
+}

@@ -1,6 +1,4 @@
-class Admin::DashboardController < ApplicationController
-
+class Admin::DashboardController < Admin::BaseController
   def index
-    @posts = Post.all
   end
 end

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
-    delete '/dashboard/posts/:id', to: 'posts#destroy'
+    # delete '/dashboard/posts/:id', to: 'posts#destroy'
+    resources :posts, only: [:index, :destroy]
   end
 
   namespace :profile do
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create]
   end
 
-  resources :posts, only: [:index, :show, :destroy] do
+  resources :posts, only: [:index, :show] do
     resources :reactions, only: [:create, :destroy]
   end
 end

@@ -14,10 +14,10 @@ RSpec.describe 'Profile/Group New -' do
         visit '/'
 
         expect(page).to have_content("It seems you haven't joined a group yet.")
-        click_link('Join a group now!')
+        click_link('Join one to get started!')
 
         expect(current_path).to eq(new_profile_group_path)
-        
+
         select 'Mod 3', :from => :group_select
         click_button('Join')
 

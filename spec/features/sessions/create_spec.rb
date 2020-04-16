@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Home Index -' do
+RSpec.describe 'Sessions -' do
   describe 'Connecting with Github -' do
     before(:each) do
       @group = create(:group, name: 'Test Group')
@@ -20,14 +20,12 @@ RSpec.describe 'Home Index -' do
     describe 'New User' do
       it 'can create an account with github' do
         visit '/'
-        expect(page).to have_content('Welcome!')
-        expect(page).to_not have_content('Logged in as ')
+        expect(page).to have_content('Welcome to Ghost Diary')
+        expect(page).to have_content('Log in to get started')
 
         click_link 'Log in with GitHub'
 
         expect(current_path).to eq('/')
-        expect(page).to have_content('Logged in as test-user')
-        expect(page).to_not have_content('Logged in as other-user')
         expect(page).to_not have_link('Log in with GitHub')
       end
     end
@@ -40,7 +38,6 @@ RSpec.describe 'Home Index -' do
         click_link 'Log in with GitHub'
 
         expect(current_path).to eq('/')
-        expect(page).to have_content('Logged in as test-user')
         expect(page).to_not have_link('Log in with GitHub')
       end
     end

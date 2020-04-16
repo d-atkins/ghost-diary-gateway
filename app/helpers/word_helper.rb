@@ -1,7 +1,7 @@
 module WordHelper
-  # def category_to_word(category)
-  #   ['Like', 'Dislike', 'Can relate', 'Lol', 'Upset'][category]
-  # end
+  def category_to_word(category)
+    ['Like', 'Dislike', 'Can relate', 'Funny!', 'Ugh..'][category]
+  end
 
   def written_number(number)
     return number if number > 10

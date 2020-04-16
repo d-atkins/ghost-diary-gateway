@@ -1,9 +1,2 @@
-<h2>All Posts</h2>
-
-<% @posts.each do |post| %>
-  <section class="post-<%= post.id %>">
-  <p><%= post.body %> (<%= link_to "Click to see post #{post.id}'s info.", "/posts/#{post.id}" %>)</p>
-  <%= render partial: "shared/ghosts", locals: {post: post} %>
-  <%= button_to "Delete Post", "/admin/dashboard/posts/#{post.id}", method: :delete %>
-  </section>
-<% end %>
+<h2>Administrator Dashboard</h2>
+<%= link_to 'All Posts', admin_posts_path, class: "btn waves-effect modal-trigger black" %>

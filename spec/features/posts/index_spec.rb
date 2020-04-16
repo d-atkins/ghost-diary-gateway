@@ -21,17 +21,16 @@ RSpec.describe 'Posts index -', type: :feature do
     end
 
     it 'sees a list of all posts belonging to that group' do
-      expect(page).to have_content("All Posts")
-      expect(page).to_not have_link("Click to see post #{Post.fourth.id}'s info.")
-      expect(page).to_not have_link("Click to see post #{Post.fifth.id}'s info.")
-      expect(page).to have_link("Click to see post #{Post.first.id}'s info.")
-      expect(page).to have_link("Click to see post #{Post.second.id}'s info.")
-      expect(page).to have_link("Click to see post #{Post.third.id}'s info.")
+      expect(page).to_not have_css(".ghost-post-#{Post.fourth.id}")
+      expect(page).to_not have_css(".ghost-post-#{Post.fifth.id}")
+      expect(page).to have_css(".ghost-post-#{Post.first.id}")
+      expect(page).to have_css(".ghost-post-#{Post.second.id}")
+      expect(page).to have_css(".ghost-post-#{Post.third.id}")
       expect(page).to have_content(Post.first.body)
     end
 
     it "can click a link to see a post's show page" do
-      click_link("Click to see post #{Post.first.id}'s info.")
+      click_on(Post.first.body)
 
       expect(current_path).to eq(post_path(Post.first.id))
     end
