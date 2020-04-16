@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   def require_user
     render file: "/public/404" unless current_user
   end
+
+  def user_belongs
+    current_user && current_user.group
+  end
 end
