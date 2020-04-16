@@ -17,17 +17,27 @@
 
       <nav class='topnav nav-center' role='navigation'>
         <div class="nav-wrapper">
-          <ul id="nav-mobile" class="nav-center hide-on-med-and-down">
+          <ul id="nav-mobile" class="nav-center black">
             <% if current_user != nil %>
-              <% if current_user.role == "registered_user" %>
-                <li><%= link_to 'Home', '/' %></li>
-                <li><%= link_to 'Profile', '/profile' %></li>
-                <li><%= link_to 'Logout', '/logout' %></li>
-              <% elsif current_user.role == "admin" %>
-                <li><%= link_to 'Home', '/' %></li>
-                <li><%= link_to 'Dashboard', '/admin/dashboard' %></li>
-                <li><%= link_to 'Logout', '/logout' %></li>
+            <li>
+              <%= link_to '/' do %>
+                <i class="large material-icons">home</i>
               <% end %>
+            </li>
+              <% if current_user.role == "registered_user" %>
+                <li>
+                  <%= link_to '/profile' do %>
+                    <i class="large material-icons">account_circle</i>
+                  <% end %>
+                </li>
+              <% elsif current_user.role == "admin" %>
+                <li><%= link_to 'Dashboard', '/admin/dashboard' %></li>
+              <% end %>
+              <li>
+                <%= link_to '/logout', html_options = {data: {confirm: 'Log out?'}} do %>
+                  <i class="large material-icons">exit_to_app</i>
+                <% end %>
+              </li>
             <% else %>
               <li>
                 <%= link_to github_login_path do %>
@@ -48,8 +58,8 @@
 
       <%= yield %>
 
-      <footer style="position:fixed;bottom:0;left:0;width:100%;", class='footer'>
-        <nav class="light-green lighten-3">
+      <footer style="position:fixed;bottom:0;left:0;width:100%;", class='footer black'>
+        <nav class="black">
           <ul>
             <p class="white-text"> Made By: David, Maria, Elom and Jenny</p>
           </ul>
