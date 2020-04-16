@@ -15,40 +15,7 @@
 
     <center>
 
-      <nav class='topnav nav-center' role='navigation'>
-        <div class="nav-wrapper">
-          <ul id="nav-mobile" class="nav-center black">
-            <% if current_user != nil %>
-            <li>
-              <%= link_to '/' do %>
-                <i class="large material-icons">home</i>
-              <% end %>
-            </li>
-              <% if current_user.role == "registered_user" %>
-                <li>
-                  <%= link_to '/profile' do %>
-                    <i class="large material-icons">account_circle</i>
-                  <% end %>
-                </li>
-              <% elsif current_user.role == "admin" %>
-                <li><%= link_to 'Dashboard', '/admin/dashboard' %></li>
-              <% end %>
-              <li>
-                <%= link_to '/logout', html_options = {data: {confirm: 'Log out?'}} do %>
-                  <i class="large material-icons">exit_to_app</i>
-                <% end %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to github_login_path do %>
-                  <i class="material-icons left">public</i>
-                  Log in with GitHub
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+      <%= render partial: 'shared/navbar' %>
 
       <% flash.each do |name, msg| %>
         <div class= "<%=name%>-flash">
