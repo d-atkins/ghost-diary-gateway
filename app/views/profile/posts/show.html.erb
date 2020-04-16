@@ -3,7 +3,7 @@
 <p><%= @post.body %></p>
 <p><%= @post.tone %></p>
 
-<%= render partial: "shared/ghosts", locals: { post: @post } %>
+<%= render partial: "shared/ghosts", locals: { post: @post, path: profile_post_path(@post.id) } %>
 
 <p><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 
