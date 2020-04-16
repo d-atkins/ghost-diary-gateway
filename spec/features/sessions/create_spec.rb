@@ -15,6 +15,8 @@ RSpec.describe 'Sessions -' do
       OmniAuth.config.mock_auth[:github] = nil
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_mock)
+
+      allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(create(:day))
     end
 
     describe 'New User' do
@@ -37,7 +39,7 @@ RSpec.describe 'Sessions -' do
 
         click_link 'Log in with GitHub'
 
-        expect(current_path).to eq('/')
+        expect(current_path).to eq('/posts')
         expect(page).to_not have_link('Log in with GitHub')
       end
     end
