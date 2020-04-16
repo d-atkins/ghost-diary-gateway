@@ -1,4 +1,4 @@
-<div class="ghost-post">
+<div class="ghost-post-<%= post.id %>">
   <%= link_to post_path(post.id) do %>
     <p class = 'bubble'><%= post.body %></p>
   <% end %>
