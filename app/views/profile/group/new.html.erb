@@ -1,5 +1,7 @@
 <p>Select a group to join</p>
-<%= form_tag profile_group_index_path do %>
-  <%= select_tag :group_select, options_from_collection_for_select(@groups, "id", "name", "1"), class: 'input-field' %>
-  <%= submit_tag 'Join', class:'waves-effect waves-light btn' %>
-<% end %>
+<div class="group-select">
+  <%= form_tag profile_group_index_path do %>
+    <%= select_tag :group_select, options_from_collection_for_select(@groups, "id", "name", "1"), class: 'input-field' %>
+    <%= submit_tag 'Join', class:'waves-effect waves-light btn cyan accent-3' %>
+  <% end %>
+</div>

@@ -5,7 +5,7 @@ RSpec.describe "Admin posts index -" do
     before(:each) do
       admin = create(:user, role: 0)
       day_1 = create(:day)
-      @post_1 = create(:post)
+      @post_1 = create(:post, body: "this is a unique post")
       create_list(:post, 4)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(day_1)
