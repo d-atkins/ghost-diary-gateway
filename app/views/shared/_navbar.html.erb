@@ -2,16 +2,18 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="nav-center black">
       <% if current_user != nil %>
-      <li>
-        <%= link_to '/', html_options = {id: 'home'} do %>
-          <i class="large material-icons">home</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to profile_path, html_options = {id: 'profile'} do %>
-          <i class="large material-icons">account_circle</i>
-        <% end %>
-      </li>
+        <li>
+          <%= link_to '/', html_options = {id: 'home'} do %>
+            <i class="large material-icons">home</i>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to profile_path, html_options = {id: 'profile'} do %>
+            <i class="large material-icons">account_circle</i>
+          <% end %>
+        </li>
+
         <% if current_user.admin? %>
           <li>
             <%= link_to '/admin/dashboard', html_options = {id: 'dashboard'} do %>
@@ -19,6 +21,7 @@
             <% end %>
           </li>
         <% end %>
+
         <li>
           <%= link_to logout_path, html_options = {id: 'logout'} do %>
             <i class="large material-icons">exit_to_app</i>
@@ -31,7 +34,9 @@
             Log in with GitHub
           <% end %>
         </li>
+
       <% end %>
     </ul>
+
   </div>
 </nav>
