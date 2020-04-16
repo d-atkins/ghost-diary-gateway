@@ -3,7 +3,7 @@
     <p class = 'bubble'><%= post.body %></p>
   <% end %>
   <% if admin %>
-    <%= link_to admin_post_path(post.id), method: :delete do %>
+    <%= link_to admin_post_path(post.id), id:'delete', method: :delete do %>
       <i class="medium material-icons">delete_forever</i>
     <% end %>
   <% end %>

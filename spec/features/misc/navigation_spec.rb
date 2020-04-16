@@ -11,7 +11,7 @@ RSpec.describe "Navbar -" do
       expect(page).to have_css('#home')
       expect(page).to have_css('#dashboard')
       expect(page).to have_css('#logout')
-      expect(page).to_not have_css('#profile')
+      expect(page).to have_css('#profile')
       expect(page).to_not have_css('#login')
     end
   end
