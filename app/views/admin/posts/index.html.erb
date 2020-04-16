@@ -3,3 +3,5 @@
 <% @posts.each do |post| %>
   <%= render partial: "shared/ghosts", locals: {post: post, path: post_path(post.id), admin: true} %>
 <% end %>
+
+<%= will_paginate @posts, page_links: false, previous_label: '←', next_label: '→' %>
