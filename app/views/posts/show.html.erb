@@ -1,6 +1,5 @@
 <h2><%= @post.day.group.name %></h2>
 <h4 class='.day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></h4>
-<p><%= @post.body %></p>
 
 <section id='reactions'>
   <% @post.reactions_by_user(current_user).each.with_index do |reaction, index| %>
@@ -17,5 +16,5 @@
 </section>
 <br>
 
-<%= render partial: "shared/ghosts", locals: { tone: @post.tone.downcase } %>
+<%= render partial: "shared/ghosts", locals: { post: @post } %>
 <p><%= @post.tone %></p>

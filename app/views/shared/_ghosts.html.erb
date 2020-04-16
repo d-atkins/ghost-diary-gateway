@@ -1,12 +1,17 @@
-<div class="outer">
-  <div class="ghost-container">
-    <div class="ghost-body" id="<%= tone %>">
-      <div class="eyeball"></div>
-      <div class="eyeball"></div>
+<div class="ghost-post">
+  <%= link_to post_path(post.id) do %>
+    <p class = 'bubble'><%= post.body %></p>
+  <% end %>
+  <div class="outer">
+    <div class="ghost-container">
+      <div class="ghost-body" id="<%= post.tone.downcase %>">
+        <div class="eyeball"></div>
+        <div class="eyeball"></div>
+      </div>
+      <div class="flap left" id="<%= post.tone.downcase %>"></div>
+      <div class="flap" id="<%= post.tone.downcase %>"></div>
+      <div class="flap right" id="<%= post.tone.downcase %>"></div>
     </div>
-    <div class="flap" id="<%= tone %>"></div>
-    <div class="flap" id="<%= tone %>"></div>
-    <div class="flap" id="<%= tone %>"></div>
+    <div class="shadow"></div>
   </div>
-  <div class="shadow"></div>
 </div>
