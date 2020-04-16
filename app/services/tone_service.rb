@@ -1,6 +1,6 @@
 class ToneService
 
-  def get_tone_by_text(text)
+  def self.get_tone_by_text(text)
     response = conn.get("/api/v1/tone") do |request|
       request.params["body"] = text
       request.params["apikey"] = ENV["ANALYZER_API_KEY"]
@@ -10,7 +10,7 @@ class ToneService
 
   private
 
-  def conn
+  def self.conn
     Faraday.new(ENV["TONE_SERVICE_DOMAIN"])
   end
 

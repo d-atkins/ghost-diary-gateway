@@ -30,8 +30,7 @@ class PostsController < ApplicationController
     end
 
     def get_tone
-      tone_service = ToneService.new
-      tone_service.get_tone_by_text(post_body)
+      ToneService.get_tone_by_text(post_body)
     end
 
 end
