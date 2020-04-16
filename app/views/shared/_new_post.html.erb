@@ -1,6 +1,6 @@
 <div class="container">
   <br>
-  <a class="btn waves-effect modal-trigger black" href="#new-post"><i class="material-icons left prefix">create</i>New Post</a>
+  <a class="btn-floating btn-large waves-effect waves-light modal-trigger red" href="#new-post"><i class="material-icons left prefix">create</i>New Post</a>
   <div id="new-post" class="modal">
     <div class="modal-content">
       <%= form_tag '/profile/posts', method: :post, class: 'col s12b' do %>
@@ -10,6 +10,9 @@
         <%= button_tag type: 'submit', class: "btn waves-effect waves-light black" do %>
           Submit<i class="material-icons right">send</i>
         <% end %>
+      </div>
+      <div class="modal-footer">
+        What's on your mind?
       </div>
     <%end%>
     </div>
