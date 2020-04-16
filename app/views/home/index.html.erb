@@ -2,9 +2,7 @@
 <p>The place to explore the memories left behind by your predecessors.</p>
 <% if current_user && current_user.group.nil? %>
   <p>It seems you haven't joined a group yet.</p>
-  <%= link_to 'Join one to get started!', new_profile_group_path %>
-<% elsif current_user %>
-  <p><%= link_to "Start Exploring", "/posts" %></p>
+  <p><%= link_to 'Join one to get started!', new_profile_group_path %></p>
 <% else %>
   <p>Log in to get started.</p>
 <% end %>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user
+  before_action :require_group
 
   def index
     @posts = day_today.posts.paginate(page: params[:page], per_page: 1)
@@ -31,6 +31,10 @@ class PostsController < ApplicationController
 
     def get_tone
       ToneService.get_tone_by_text(post_body)
+    end
+
+    def require_group
+      render file: "/public/404" unless current_user && current_user.group
     end
 
 end
