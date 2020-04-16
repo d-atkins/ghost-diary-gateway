@@ -1,9 +1,9 @@
 <div class="container">
   <br>
-  <a class="btn-floating btn-large waves-effect waves-light modal-trigger red" href="#new-post"><i class="material-icons left prefix">create</i>New Post</a>
+  <a class="btn-floating btn-large waves-effect waves-light modal-trigger red accent-2" href="#new-post"><i class="material-icons left prefix">create</i>New Post</a>
   <div id="new-post" class="modal">
     <div class="modal-content">
-      <%= form_tag '/profile/posts', method: :post, class: 'col s12b' do %>
+      <%= form_tag posts_path, method: :post, class: 'col s12b' do %>
       <div class="input-field col s12">
         <i class="material-icons prefix">whatshot</i>
         <%= text_area_tag :body, nil, class:'materialize-textarea', :'data-length' => '222' %>
