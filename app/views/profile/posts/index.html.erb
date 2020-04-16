@@ -1,4 +1,4 @@
-<h2>My Posts</h2>
+<h4>My Posts</h4>
 
 <% @posts.each do |post| %>
   <%= render partial: "shared/ghosts", locals: { post: post, path: profile_post_path(post.id), admin: false } %>
