@@ -10,7 +10,7 @@ RSpec.describe "Profile/posts index -", type: :feature do
       day_2 = create(:day, week: 1, day_of_week: 1, group: group_2)
       day_3 = create(:day, week: 1, day_of_week: 2, group: group_1)
       @post_1 = create(:post, day: day_1, user: user)
-      @post_2 = create(:post, day: day_1, user: user)
+      @post_2 = create(:post, day: day_1, user: user, body: 'this is a unique post')
       @post_3 = create(:post, day: day_1, user: user)
       @post_4 = create(:post, day: day_2)
       @post_5 = create(:post, day: day_3, user: user)
