@@ -4,4 +4,4 @@
   <%= render partial: "shared/ghosts", locals: { post: post, path: profile_post_path(post.id), admin: false } %>
 <% end %>
 
-<%= will_paginate @posts, page_links: false, previous_label: '←', next_label: '→' %>
+<%= will_paginate @posts, previous_label: '←', next_label: '→' %>
