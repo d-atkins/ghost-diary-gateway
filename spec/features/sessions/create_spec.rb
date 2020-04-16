@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Home Index -' do
+RSpec.describe 'Sessions -' do
   describe 'Connecting with Github -' do
     before(:each) do
       @group = create(:group, name: 'Test Group')
