@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
     resources :stats, only: [:index]
     resources :group, only: [:new, :create]
-    resources :posts, only: [:index, :show, :create]
+    resources :posts, only: [:index, :show]
   end
 
-  resources :posts, only: [:index, :show] do
+  resources :posts, only: [:index, :show, :create] do
     resources :reactions, only: [:create, :destroy]
   end
 end

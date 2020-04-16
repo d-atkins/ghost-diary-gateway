@@ -1,5 +1,9 @@
 <h2>All Posts</h2>
 
 <% @posts.each do |post| %>
+  <p class ='small-font'><%= post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
   <%= render partial: "shared/ghosts", locals: {post: post, path: post_path(post.id), admin: true} %>
+  <br><br>
 <% end %>
+
+<%= will_paginate @posts, page_links: false, previous_label: '←', next_label: '→' %>
