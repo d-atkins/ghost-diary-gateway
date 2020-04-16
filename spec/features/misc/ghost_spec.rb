@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As a Registered User" do
+RSpec.describe "Registered user" do
   before(:each) do
     group_1 = create(:group, name: 'Mod 1')
     user = create(:user, group: group_1)
@@ -11,36 +11,36 @@ RSpec.describe "As a Registered User" do
     allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(day_1)
   end
 
-  it "I can see a ghost on the homepage" do
+  it "can see a ghost on the homepage" do
     visit "/"
 
     expect(page).to have_css(".ghost-container")
   end
 
-  it "I can see a ghost on the posts index page" do
+  it "can see a ghost on the posts index page" do
     visit "/posts"
 
-    within ".post-#{@post.id}" do
+    within ".ghost-post-#{@post.id}" do
       expect(page).to have_css(".ghost-container")
     end
   end
 
-  it "I can see a ghost on the posts show page" do
+  it "can see a ghost on the posts show page" do
     visit "/posts/#{@post.id}"
 
     expect(page).to have_css(".ghost-container")
   end
 
-  it "I can see a ghost on my posts show page" do
+  it "can see a ghost on my posts show page" do
     visit "/profile/posts/#{@post.id}"
 
     expect(page).to have_css(".ghost-container")
   end
 
-  it "I can see a ghost on my posts index page" do
+  it "can see a ghost on my posts index page" do
     visit "/profile/posts"
 
-    within ".post-#{@post.id}" do
+    within ".ghost-post-#{@post.id}" do
       expect(page).to have_css(".ghost-container")
     end
   end

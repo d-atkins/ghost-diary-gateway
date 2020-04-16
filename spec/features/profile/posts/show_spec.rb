@@ -25,7 +25,6 @@ RSpec.describe "Profile/posts show page -", type: :feature do
     end
 
     it "sees the post's information" do
-      expect(page).to have_content(@post_2.id)
       expect(page).to have_content('Mod 1')
       expect(page).to have_content('Week 1')
       expect(page).to have_content('Monday')

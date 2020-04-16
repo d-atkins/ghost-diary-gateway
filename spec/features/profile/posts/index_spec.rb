@@ -21,17 +21,17 @@ RSpec.describe "Profile/posts index -", type: :feature do
     end
 
     it 'sees a list of all posts they made' do
-      expect(page).to have_content("Your Posts")
-      expect(page).to_not have_link("Click to see post #{@post_4.id}'s info.")
-      expect(page).to have_link("Click to see post #{@post_1.id}'s info.")
-      expect(page).to have_link("Click to see post #{@post_2.id}'s info.")
-      expect(page).to have_link("Click to see post #{@post_3.id}'s info.")
-      expect(page).to have_link("Click to see post #{@post_5.id}'s info.")
+      expect(page).to have_content("My Posts")
+      expect(page).to_not have_css(".ghost-post-#{@post_4.id}")
+      expect(page).to have_css(".ghost-post-#{@post_1.id}")
+      expect(page).to have_css(".ghost-post-#{@post_2.id}")
+      expect(page).to have_css(".ghost-post-#{@post_3.id}")
+      expect(page).to have_css(".ghost-post-#{@post_5.id}")
       expect(page).to have_content(@post_1.body)
     end
 
     it "can click a link to see a post's show page" do
-      click_link("Click to see post #{@post_2.id}'s info.")
+      click_on(@post_2.body)
 
       expect(current_path).to eq(profile_post_path(@post_2))
     end

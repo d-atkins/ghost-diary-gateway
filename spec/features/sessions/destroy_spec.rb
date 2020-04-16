@@ -9,7 +9,7 @@ describe 'Sessions -' do
       visit '/'
       within '.topnav' do
         expect(page).to_not have_content("Log in with GitHub")
-        click_on "Logout"
+        find('#logout').click
       end
       expect(current_path).to eq('/')
       expect(page).to_not have_content("Log in with GitHub")

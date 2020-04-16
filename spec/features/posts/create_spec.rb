@@ -21,7 +21,7 @@ RSpec.describe 'Posts create -', type: :feature do
     end
 
     it 'can create a post with a generated tone, and add it to index list' do
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
       fill_in :body, with: "This is my first post. What do you think?"
       click_on('Submit')
 
@@ -30,14 +30,13 @@ RSpec.describe 'Posts create -', type: :feature do
       @day_1.reload
       visit posts_path
       post = Post.last
-
-      expect(page).to have_link("Click", count: 4)
+      expect(page).to have_css(".bubble", count: 4)
       expect(page).to have_content('This is my first post. What do you think?')
       expect(post.tone).to eq('Analytical')
     end
 
     it 'can create a post with a generated tone if text has multiple sentences, and add it to index list' do
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
 
       text = "He’s more myself than I am. Whatever our souls are made of,
       his and mine are the same…my great thought in living is himself."
@@ -51,13 +50,13 @@ RSpec.describe 'Posts create -', type: :feature do
       visit posts_path
       post = Post.last
 
-      expect(page).to have_link("Click", count: 4)
-      expect(page).to have_link("Click to see post #{post.id}'s info.")
+      expect(page).to have_css(".bubble", count: 4)
+      expect(page).to have_css(".ghost-post-#{post.id}")
       expect(post.tone).to eq('Joy')
     end
 
     it 'can create a post with no tone' do
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
       text = 'hmm'
 
       fill_in :body, with: text
@@ -69,30 +68,30 @@ RSpec.describe 'Posts create -', type: :feature do
       visit posts_path
       post = Post.last
 
-      expect(page).to have_link("Click", count: 4)
-      expect(page).to have_link("Click to see post #{post.id}'s info.")
+      expect(page).to have_css(".bubble", count: 4)
+      expect(page).to have_css(".ghost-post-#{post.id}")
       expect(post.tone).to eq('Default')
     end
 
     it 'can not create a post longer than 222 characters' do
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
 
       text = "He’s more myself than I am. Whatever our souls are made of, his and mine are the same…my great thought in living is himself. If all else perished, and he remained, I should still continue to be; and if all else remained, and he were annihilated, the universe would turn to a mighty stranger. I should not seem a part of it."
 
       fill_in :body, with: text
       click_on('Submit')
 
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
       expect(page).to have_content("Body is too long (maximum is 222 characters)")
     end
 
     it 'can not create an empty post' do
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
 
       fill_in :body, with: ''
       click_on('Submit')
 
-      expect(page).to have_link("Click", count: 3)
+      expect(page).to have_css(".bubble", count: 3)
       expect(page).to have_content("Body can't be blank")
     end
 
