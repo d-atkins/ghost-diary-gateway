@@ -1,16 +1,19 @@
-<p><%= @post.day.group.name %></p>
-<p class='day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></p>
-<p><%= @post.body %></p>
+<h2><%= @post.day.group.name %></h2>
+<h4 class='day-week'><%= "#{@post.day.day_of_week}," %> Week <%= @post.day.week %></h4>
 <p><%= @post.tone %></p>
 
+<p class ='small-font'><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 <%= render partial: "shared/ghosts", locals: { post: @post, path: profile_post_path(@post.id) } %>
 
-<p><%= @post.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></p>
 
 <div id="reactions">
-  <p>Liked by <b><%= written_number(@post.reactions.amount_of(0)) %></b></p>
-  <p>Disliked by <b><%= written_number(@post.reactions.amount_of(1)) %></b></p>
+  <p>
+    Liked by <b><%= written_number(@post.reactions.amount_of(0)) %>,</b>
+    disliked by <b><%= written_number(@post.reactions.amount_of(1)) %></b>
+  </p>
   <p><b><%= written_number(@post.reactions.amount_of(2)).capitalize %></b> can relate</p>
-  <p>Made <b><%= written_number(@post.reactions.amount_of(3)) %></b> laugh</p>
-  <p>Made <b><%= written_number(@post.reactions.amount_of(4)) %></b> say 'ugh'</p>
+  <p>
+    Made <b><%= written_number(@post.reactions.amount_of(3)) %></b> laugh,
+    made <b><%= written_number(@post.reactions.amount_of(4)) %></b> say 'ugh'
+  </p>
 </div>
