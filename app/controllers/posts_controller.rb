@@ -10,13 +10,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    PostMakerJob.perform_later(post_body[:body], current_user.id, day_today.id)
-    # post = Post.new(post_params)
-    # if post.save
-    #   flash[:success] = 'You have made a post!'
-    # else
-    #   flash[:errors] = post.errors.full_messages.to_sentence
-    # end
+    if post_body[:body].length > 222
+      flash[:errors] = 'Body is too long (maximum is 222 characters)'
+    elsif post_body[:body].length <= 0
+      flash[:errors] = "Body can't be blank"
+    else
+      PostMakerJob.perform_later(post_body[:body], current_user.id, day_today.id)
+    end
     redirect_to posts_path
   end
 
