@@ -24,11 +24,8 @@ RSpec.describe 'Posts create -', type: :feature do
 
       expect(current_path).to eq(posts_path)
 
-      @day_1.reload
-      visit posts_path
-
-      expect(page).to have_css(".bubble", count: 1)
-      expect(page).to have_content('This is my first post. What do you think?')
+      expect(page).to_not have_content("Body is too long (maximum is 222 characters)")
+      expect(page).to_not have_content("Body can't be blank")
     end
 
     it 'can not create a post longer than 222 characters' do
