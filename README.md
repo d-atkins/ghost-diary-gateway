@@ -1,5 +1,5 @@
 # README
-
+![Ghost Diary](app/assets/images/gd_narrow.png)
 ## Description
 Ghost Diary is a microblogging platform with a twist: you don't communicate directly with anyone and you don't need any friends or followers; you just need to belong to a program.
 
@@ -9,12 +9,15 @@ Instead of sorting posts by date posted, Ghost Diary organizes posts by the rela
 
 As students who are a part of an intensive tech program, we are caught in a constant battle against adversity: we withstand crushing pressure and celebrate exhausting wins on the regular. It's natural to wonder how everyone else is doing when under such great stress, but it can feel troublesome to constantly pester your peers for something so little. Ghost Diary aims to solve this problem.
 
-Ghost Diary is a greenfield project that began as an idea and ended as a full-featured, professional application. The back-end was built with Ruby on Rails and Sinatra, Materialize was used to add a little polish to the front-end, and users authenticate through GitHub via OmniAuth.
+Ghost Diary is a greenfield project that began as an idea and has been realized as a full-featured, professional application.
+
+The back-end was built with Ruby on Rails and Sinatra, Materialize was used to add a little polish to the front-end, and users authenticate through GitHub via OmniAuth.
 
 [David Atkins](https://github.com/d-atkins), [Elom Amouzou](https://github.com/eamouzou), [Jenny Klich](https://github.com/jklich151), [Maria Ronauli](https://github.com/mronauli)
 
 ### [View Ghost Diary in Production](https://turing-ghost-diary.herokuapp.com/)
-<img width="1389" alt="Ghost Diary Homepage" src="app/assets/images/ghost_diary_homepage.png">
+
+![Welcome Page](app/assets/images/gd_welcome.png)
 
 ## Schema
 ![Alt text](app/assets/images/ghost_diary_db_diagram.png)
@@ -24,6 +27,7 @@ Ghost Diary is a greenfield project that began as an idea and ended as a full-fe
 #### Requirements:
 - Ruby 2.5.1
 - PostgreSQL 12.1
+- Redis
 
 #### Installation:
 
@@ -63,8 +67,14 @@ TONE_SERVICE_DOMAIN: https://turing-ghost-tone.herokuapp.com **
 ## Tests
 To run the test suite, run the following command: `bundle exec rspec`. You must be connected to the internet and your environment variables must be set up correctly for the `/spec/services` tests to pass. The same applies for running the app in development.
 
-## Deployment
-To run Ghost Diary in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
+## Development
+To run Ghost Diary in development, execute the following commands from the project directory (you will need three separate tabs):
+```
+$ redis-server
+$ bundle exec sidekiq
+$ rails s
+```
+Visit `http://localhost:3000` to view the application in development.
 To view our application in production, visit [Ghost Diary](https://turing-ghost-diary.herokuapp.com/) on Heroku.
 
 ## Tools
@@ -75,6 +85,7 @@ To view our application in production, visit [Ghost Diary](https://turing-ghost-
 * Figaro
 * Materialize
 * Will_paginate
+* Sidekiq
 
 #### Testing:
 * SimpleCov
@@ -88,6 +99,10 @@ Continuous Integration with Travis-CI
 
 Deployed on Heroku
 
+## Next Steps
+* Responsive web design - get Ghost Diary looking good on phones!
+* Search by tags - be able to filter posts by hashtags
+
 ## Contributors
 * [David Atkins](https://github.com/d-atkins)
 * [Elom Amouzou](https://github.com/eamouzou)
@@ -98,4 +113,4 @@ Deployed on Heroku
 * [Brian Zanti](https://github.com/BrianZanti)
 * [Dione Wilson](https://github.com/dionew1)
 
-### [Project Specifications](https://backend.turing.io/module3/projects/terrificus/)
+#### [Project Specifications](https://backend.turing.io/module3/projects/terrificus/)

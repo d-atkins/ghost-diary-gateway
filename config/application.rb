@@ -36,5 +36,7 @@ module GhostDiaryGateway
     config.generators do |g|
       g.factory_bot suffix: "factory"
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

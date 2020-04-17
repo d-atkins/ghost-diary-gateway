@@ -16,6 +16,7 @@ gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rspec'
+gem 'sidekiq', '~> 5.2.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

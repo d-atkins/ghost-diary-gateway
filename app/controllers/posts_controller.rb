@@ -10,11 +10,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
-      flash[:success] = 'You have made a post!'
+    if post_body[:body].length > 222
+      flash[:errors] = 'Body is too long (maximum is 222 characters)'
+    elsif post_body[:body].length <= 0
+      flash[:errors] = "Body can't be blank"
     else
-      flash[:errors] = post.errors.full_messages.to_sentence
+      PostMakerJob.perform_later(post_body[:body], current_user.id, day_today.id)
     end
     redirect_to posts_path
   end
@@ -23,14 +24,6 @@ class PostsController < ApplicationController
 
     def post_body
       params.permit(:body)
-    end
-
-    def post_params
-      {day: day_today, tone: get_tone, user: current_user}.merge(post_body)
-    end
-
-    def get_tone
-      ToneService.get_tone_by_text(post_body)
     end
 
     def require_group
