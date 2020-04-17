@@ -1,5 +1,5 @@
 # README
-![Alt text](app/assets/images/gd_narrow.png)
+![Ghost Diary](app/assets/images/gd_narrow.png)
 ## Description
 Ghost Diary is a microblogging platform with a twist: you don't communicate directly with anyone and you don't need any friends or followers; you just need to belong to a program.
 
@@ -16,7 +16,8 @@ The back-end was built with Ruby on Rails and Sinatra, Materialize was used to a
 [David Atkins](https://github.com/d-atkins), [Elom Amouzou](https://github.com/eamouzou), [Jenny Klich](https://github.com/jklich151), [Maria Ronauli](https://github.com/mronauli)
 
 ### [View Ghost Diary in Production](https://turing-ghost-diary.herokuapp.com/)
-<img width="1389" alt="Ghost Diary Homepage" src="app/assets/images/ghost_diary_homepage.png">
+
+![Welcome Page](app/assets/images/gd_welcome.png)
 
 ## Schema
 ![Alt text](app/assets/images/ghost_diary_db_diagram.png)
