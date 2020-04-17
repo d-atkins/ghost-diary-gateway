@@ -1,0 +1,39 @@
+{
+    "kind": "calendar#events",
+    "etag": "\"p328abi6sljmug0g\"",
+    "summary": "BEE M3 Professional Rails Applications",
+    "updated": "2020-04-16T16:19:20.762Z",
+    "timeZone": "America/Denver",
+    "accessRole": "reader",
+    "defaultReminders": [],
+    "nextSyncToken": "CJClyNys7egCEAAYAQ==",
+    "items": [
+        {
+            "kind": "calendar#event",
+            "etag": "\"3173480280356000\"",
+            "id": "072km5tu63isanvfnq5lck7ndp",
+            "status": "confirmed",
+            "htmlLink": "https://www.google.com/calendar/event?eid=MDcya201dHU2M2lzYW52Zm5xNWxjazduZHAgY2FzaW1pcmNyZWF0aXZlLmNvbV9lOWs5YjZuN2JvazE3NGlsbXFiZmRyMHNjNEBn",
+            "created": "2020-02-24T21:32:12.000Z",
+            "updated": "2020-04-13T01:09:00.178Z",
+            "summary": "Week 1",
+            "creator": {
+                "email": "dione@casimircreative.com"
+            },
+            "organizer": {
+                "email": "casimircreative.com_e9k9b6n7bok174ilmqbfdr0sc4@group.calendar.google.com",
+                "displayName": "BEE M3 Professional Rails Applications",
+                "self": true
+            },
+            "start": {
+                "date": "2020-04-13"
+            },
+            "end": {
+                "date": "2020-04-18"
+            },
+            "transparency": "transparent",
+            "iCalUID": "072km5tu63isanvfnq5lck7ndp@google.com",
+            "sequence": 0
+        }
+    ]
+}
