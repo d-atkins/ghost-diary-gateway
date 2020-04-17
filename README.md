@@ -1,5 +1,5 @@
 # README
-
+![Alt text](app/assets/images/gd_narrow.png)
 ## Description
 Ghost Diary is a microblogging platform with a twist: you don't communicate directly with anyone and you don't need any friends or followers; you just need to belong to a program.
 
