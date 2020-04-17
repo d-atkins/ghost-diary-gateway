@@ -1,2 +1,2 @@
 <%= render partial: "shared/new_post" %><br>
-<%= render partial: "shared/ghosts", locals: { post: @post, path: post_path(@post.id), admin: false } %>
+<%= render partial: "shared/ghosts", locals: { post: @post, path: post_path(@post.id), admin: false } if @post %>
