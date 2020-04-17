@@ -1,7 +1,6 @@
 .ghost-container {
   width: 100px;
-  animation: move 2s linear infinite;
-  animation: appear 3s;
+  animation: appear 3s, move 2s linear infinite;
 }
 
 @keyframes move {
