@@ -1,22 +1,28 @@
 <div class="ghost-post-<%= post.id %>">
   <%= link_to path do %>
-    <p class = 'bubble'><%= post.body %></p>
+    <section class = 'bubble'>
+      <strong><%= post.day.day_of_week %>, <%= post.day.display_week %></strong>
+      <p>"<%= post.body %>"</p>
+    </section>
   <% end %>
   <% if admin %>
     <%= link_to admin_post_path(post.id), id:'delete', method: :delete do %>
       <i class="medium material-icons">delete_forever</i>
     <% end %>
   <% end %>
-  <div class="outer">
-    <div class="ghost-container">
-      <div class="ghost-body" id="<%= post.tone.downcase %>">
-        <div class="eyeball"></div>
-        <div class="eyeball"></div>
+
+  <%= link_to posts_path do %>
+    <div class="outer">
+      <div class="ghost-container">
+        <div class="ghost-body" id="<%= post.tone.downcase %>">
+          <div class="eyeball"></div>
+          <div class="eyeball"></div>
+        </div>
+        <div class="flap left" id="<%= post.tone.downcase %>"></div>
+        <div class="flap" id="<%= post.tone.downcase %>"></div>
+        <div class="flap right" id="<%= post.tone.downcase %>"></div>
       </div>
-      <div class="flap left" id="<%= post.tone.downcase %>"></div>
-      <div class="flap" id="<%= post.tone.downcase %>"></div>
-      <div class="flap right" id="<%= post.tone.downcase %>"></div>
+      <div class="shadow"></div>
     </div>
-    <div class="shadow"></div>
-  </div>
+  <% end %>
 </div>
