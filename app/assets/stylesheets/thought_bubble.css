@@ -1,4 +1,4 @@
-p.bubble {
+section.bubble {
   position:relative;
   width:400px;
   padding:20px 40px;
@@ -9,9 +9,15 @@ p.bubble {
   color:#575544;
   font-size:1em;
   letter-spacing:.06em;
+  animation: appear 1s;
 }
 
-p.bubble:before {
+@keyframes appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+section.bubble:before {
   content:"";
   position:absolute;
   bottom:-40px;
@@ -23,7 +29,7 @@ p.bubble:before {
   box-shadow: -3px 3px 8px #989898;
 }
 
-p.bubble:after {
+section.bubble:after {
   content:"";
   position:absolute;
   bottom:-55px;
