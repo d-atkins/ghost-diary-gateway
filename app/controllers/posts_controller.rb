@@ -10,12 +10,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
-      flash[:success] = 'You have made a post!'
-    else
-      flash[:errors] = post.errors.full_messages.to_sentence
-    end
+    PostMakerJob.perform_later(post_body[:body], current_user.id, day_today.id)
+    # post = Post.new(post_params)
+    # if post.save
+    #   flash[:success] = 'You have made a post!'
+    # else
+    #   flash[:errors] = post.errors.full_messages.to_sentence
+    # end
     redirect_to posts_path
   end
 
