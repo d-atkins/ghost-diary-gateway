@@ -1,7 +1,2 @@
-<%= render partial: "shared/new_post" %>
-<% @posts.each do |post| %>
-  <section class="post-<%= post.id %>">
-  <%= render partial: "shared/ghosts", locals: { post: post, path: post_path(post.id), admin: false } %>
-  <%= will_paginate @posts, page_links: false, previous_label: '←', next_label: '→' %>
-
-<% end %>
+<%= render partial: "shared/new_post" %><br>
+<%= render partial: "shared/ghosts", locals: { post: @post, path: post_path(@post.id), admin: false } if @post %>

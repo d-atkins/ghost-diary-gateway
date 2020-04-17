@@ -6,9 +6,12 @@ RSpec.describe 'Posts create -', type: :feature do
       group_1 = create(:group, name: 'Mod 1')
       user = create(:user, group: group_1)
       @day_1 = create(:day, week: 1, day_of_week: 1, group: group_1)
+
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(@day_1)
-      allow_any_instance_of(PostsController).to receive(:get_tone).and_return("Test Tone")
+      response = double("response", status: 200, body: "\"Default\"")
+
+      allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(response)
 
       visit posts_path
     end

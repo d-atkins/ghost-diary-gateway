@@ -6,9 +6,8 @@ RSpec.describe "Navbar -" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     allow_any_instance_of(ApplicationController).to receive(:day_today).and_return(create(:day))
 
-
     visit "/"
-
+    
     within '.topnav' do
       expect(page).to have_css('#home')
       expect(page).to have_css('#dashboard')

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :require_group
 
   def index
-    @posts = day_today.posts.paginate(page: params[:page], per_page: 1)
+    @post = day_today.posts.sample
   end
 
   def show
