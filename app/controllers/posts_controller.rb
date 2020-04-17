@@ -26,14 +26,6 @@ class PostsController < ApplicationController
       params.permit(:body)
     end
 
-    def post_params
-      {day: day_today, tone: get_tone, user: current_user}.merge(post_body)
-    end
-
-    def get_tone
-      ToneService.get_tone_by_text(post_body)
-    end
-
     def require_group
       render file: "/public/404" unless current_user && current_user.group
     end
