@@ -1,10 +1,19 @@
 # README
 
 ## Description
-David, describe your baby here!
+Ghost Diary is a microblogging platform with a twist: you don't communicate directly with anyone and you don't need any friends or followers; you just need to belong to a program.
 
-This application utilizes Ruby on Rails, JavaScript, HTML, CSS, Materialize, and authentication via OmniAuth.
-## [View Ghost Diary in Heroku](https://turing-ghost-diary.herokuapp.com/)
+Instead of sorting posts by date posted, Ghost Diary organizes posts by the relative day and week of a program. For example, someone going through Wednesday, Week 4 of a software design school is able to:
+1. see the posts made by people who are going through/have already been through that same day of that same program, and
+2. make posts that others in the future will be able to read when they, themselves, are going through that same day.
+
+As students who are a part of an intensive tech program, we are caught in a constant battle against adversity: we withstand crushing pressure and celebrate exhausting wins on the regular. It's natural to wonder how everyone else is doing when under such great stress, but it can feel troublesome to constantly pester your peers for something so little. Ghost Diary aims to solve this problem.
+
+Ghost Diary is a greenfield project that began as an idea and ended as a full-featured, professional application. The back-end was built with Ruby on Rails and Sinatra, Materialize was used to add a little polish to the front-end, and users authenticate through GitHub via OmniAuth.
+
+[David Atkins](https://github.com/d-atkins), [Elom Amouzou](https://github.com/eamouzou), [Jenny Klich](https://github.com/jklich151), [Maria Ronauli](https://github.com/mronauli)
+
+### [View Ghost Diary in Production](https://turing-ghost-diary.herokuapp.com/)
 <img width="1389" alt="Ghost Diary Homepage" src="app/assets/images/ghost_diary_homepage.png">
 
 ## Schema
@@ -12,56 +21,81 @@ This application utilizes Ruby on Rails, JavaScript, HTML, CSS, Materialize, and
 
 ## Getting Started
 
-To run Ghost Diary on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
+#### Requirements:
+- Ruby 2.5.1
+- PostgreSQL 12.1
 
+#### Installation:
+
+```
 $ git clone https://github.com/d-atkins/ghost-diary-gateway.git   
 $ cd ghost-diary-gateway  
+$ gem install bundler   
 $ bundle   
 $ rails db:{drop,create,migrate,seed}   
 $ bundle exec figaro install   
-## Environment Variable Setup:
-##### You will need access to the following:
-* Sign up for a Tone Analyzer key:
-> [Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
-* Sign up for a Google API key:
-> [Google Calendar](https://support.google.com/googleapi/answer/6158862?hl=en)     
-* Follow the directions for step 1 in the following resource to retrieve github id and secret:
-> [Github Client](https://paw.cloud/docs/examples/github-api)
+```
+If you have problems bundling, try deleting `Gemfile.lock`
 
-Add the following to your `config/application.yml` file. Insert the relevant values in place of 'insert_here'.  
+## Environment Setup:
+Ghost Diary consumes the Google Calendar API and IBM Tone Analyzer. Internet connection required. In order to run in development, you will need to set up your environment variables.
 
+##### You will need the following:
+Tone Analyzer key: [Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
+
+Google API key: [Google API Key](https://support.google.com/googleapi/answer/6158862?hl=en)
+
+GitHub OAuth App: [Github OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+> To test in development, set the Authorization callback URL to `http://localhost:3000/auth/github/callback`
+
+Add the following environment variables to your `config/application.yml` file. Insert the relevant values in place of 'insert_here'.  
+
+```
 GITHUB_CLIENT_ID: 'insert_here'   
 GITHUB_CLIENT_SECRET: 'insert_here'   
 ANALYZER_API_KEY: 'insert_here'   
 GOOGLE_API_KEY: 'insert_here'   
-TONE_SERVICE_DOMAIN: https://turing-ghost-tone.herokuapp.com  
+TONE_SERVICE_DOMAIN: https://turing-ghost-tone.herokuapp.com **
+```
+
+** if you want to run this app with a local microservice, then set this variable as: `TONE_SERVICE_DOMAIN: http://localhost:9292` and follow the instructions for "Running in Development" found in [Ghost Diary Tone Service](https://github.com/d-atkins/ghost-diary-tone-service).
+
 ## Tests
-To run the test suite, run the following command: `bundle exec rspec`.
+To run the test suite, run the following command: `bundle exec rspec`. You must be connected to the internet and your environment variables must be set up correctly for the `/spec/services` tests to pass. The same applies for running the app in development.
+
 ## Deployment
-To view Ghost Diary in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
-To view the application in production, go to [Heroku Ghost Diary](https://turing-ghost-diary.herokuapp.com/)  
+To run Ghost Diary in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
+To view our application in production, visit [Ghost Diary](https://turing-ghost-diary.herokuapp.com/) on Heroku.
 
 ## Tools
-* OmniAuth
-* Travis CI
-* SimpleCov
-* PostgreSQL
-* Capybara
-* Github
+
+#### Notable Gems:
+* OmniAuth-Github
 * Faraday
-* Postman
-* Figaro   
-## Authors
+* Figaro
+* Materialize
+* Will_paginate
+
+#### Testing:
+* SimpleCov
+* Capybara
+* RSpec
+* Shoulda-matchers
+* Factory bot
+* Faker
+
+Continuous Integration with Travis-CI
+
+Deployed on Heroku
+
+## Contributors
 * [David Atkins](https://github.com/d-atkins)
 * [Elom Amouzou](https://github.com/eamouzou)
 * [Jenny Klich](https://github.com/jklich151)
 * [Maria Ronauli](https://github.com/mronauli)
+
 ## Acknowledgments
 * [Brian Zanti](https://github.com/BrianZanti)
 * [Dione Wilson](https://github.com/dionew1)
-### [Project Specifications Link](https://backend.turing.io/module3/projects/terrificus/)     
 
-
-Things to add???
-
-(Ruby version, System dependencies, Configuration, Database creation, Database initialization, How to run the test suite, Services (job queues, cache servers, search engines, etc.), Deployment instructions)
+### [Project Specifications](https://backend.turing.io/module3/projects/terrificus/)
