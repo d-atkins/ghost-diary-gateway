@@ -5,5 +5,4 @@ services:
   - redis-server
 script:
   - bundle exec rake db:{create,migrate}
-  - bundle exec sidekiq
   - bundle exec rspec
