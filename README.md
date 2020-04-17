@@ -88,6 +88,10 @@ Continuous Integration with Travis-CI
 
 Deployed on Heroku
 
+## Next Steps
+* Responsive web design
+* More features - tags
+
 ## Contributors
 * [David Atkins](https://github.com/d-atkins)
 * [Elom Amouzou](https://github.com/eamouzou)
